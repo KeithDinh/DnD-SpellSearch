@@ -43,8 +43,9 @@ class TableViewController: UITableViewController {
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier=="detail_seg" {
-            let seg = segue.destination as! FirstViewController
-            seg.passedInformation = selectedInformation
+            let TabController = segue.destination as! UITabBarController
+            let TabView = TabController.viewControllers![0] as! FirstViewController
+            TabView.passedInformation = selectedInformation
         }
     }
     

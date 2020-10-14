@@ -44,6 +44,7 @@ class SearchViewController: UIViewController {
         if url != nil {
             downloadData(url: url!)
         }
+        
         // Do any additional setup after loading the view.
     }
     
@@ -52,6 +53,7 @@ class SearchViewController: UIViewController {
         if segue.identifier == "table_seg" {
             let TableView = segue.destination as! TableViewController
             TableView.passedList = similarList
+            self.similarList = []
         }
     }
     
@@ -63,8 +65,7 @@ class SearchViewController: UIViewController {
             for items in tempList{
                 spellList.append(items)
             }
-            DispatchQueue.main.async {
-            }
+         //   DispatchQueue.main.async {}
                } catch {
                    print("Decoding Error")
                }
@@ -90,14 +91,14 @@ class SearchViewController: UIViewController {
                       self.present(alert, animated: true)
                       return
               }
-        let searchedText = searchField.text?.lowercased().replacingOccurrences(of: " ", with: "-")
+        let searchedText = searchField.text!.lowercased().replacingOccurrences(of: " ", with: "-")
+
         for item in spellList {
-            if item.name.contains("\(searchedText!)"){
-                           similarList.append(item)
-                    }
-            
+            if item.index.contains("\(searchedText)"){
+                similarList.append(item)
+            }
         }
-        
+        print(count)
         performSegue(withIdentifier: "table_seg", sender: self)
     }
     
