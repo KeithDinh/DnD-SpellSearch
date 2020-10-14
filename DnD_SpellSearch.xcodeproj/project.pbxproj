@@ -15,6 +15,8 @@
 		3F56543D25366BCF00348E3D /* DnD_SpellSearch.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3F56543B25366BCF00348E3D /* DnD_SpellSearch.xcdatamodeld */; };
 		3F56543F25366BD300348E3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F56543E25366BD300348E3D /* Assets.xcassets */; };
 		3F56544225366BD300348E3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F56544025366BD300348E3D /* LaunchScreen.storyboard */; };
+		3F56544A25366D9F00348E3D /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F56544925366D9F00348E3D /* TableViewController.swift */; };
+		3F56544C25366DBD00348E3D /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F56544B25366DBD00348E3D /* SearchViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		3F56543E25366BD300348E3D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3F56544125366BD300348E3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3F56544325366BD300348E3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3F56544925366D9F00348E3D /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		3F56544B25366DBD00348E3D /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +66,8 @@
 			children = (
 				3F56543025366BCF00348E3D /* AppDelegate.swift */,
 				3F56543225366BCF00348E3D /* SceneDelegate.swift */,
+				3F56544B25366DBD00348E3D /* SearchViewController.swift */,
+				3F56544925366D9F00348E3D /* TableViewController.swift */,
 				3F56543425366BCF00348E3D /* FirstViewController.swift */,
 				3F56543625366BCF00348E3D /* SecondViewController.swift */,
 				3F56543825366BCF00348E3D /* Main.storyboard */,
@@ -145,6 +151,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F56543D25366BCF00348E3D /* DnD_SpellSearch.xcdatamodeld in Sources */,
+				3F56544C25366DBD00348E3D /* SearchViewController.swift in Sources */,
+				3F56544A25366D9F00348E3D /* TableViewController.swift in Sources */,
 				3F56543725366BCF00348E3D /* SecondViewController.swift in Sources */,
 				3F56543525366BCF00348E3D /* FirstViewController.swift in Sources */,
 				3F56543125366BCF00348E3D /* AppDelegate.swift in Sources */,

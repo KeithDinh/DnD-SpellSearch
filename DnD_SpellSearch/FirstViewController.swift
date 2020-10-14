@@ -10,9 +10,15 @@ import UIKit
 
 class FirstViewController: UIViewController {
 
+    var passedInformation = Spells()
+    
+    @IBOutlet weak var test: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        self.test.text = passedInformation.url
     }
 
 
