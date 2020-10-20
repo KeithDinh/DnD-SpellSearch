@@ -71,25 +71,34 @@ struct spellDetails : Codable {
 }
 class FirstViewController: UIViewController {
 
-    var passedInformation = Spells()
+    var passedInformation: String = ""
     var thisSpell = spellDetails()
     
-    @IBOutlet weak var test: UILabel!
-    
+    @IBOutlet weak var spellTitle: UILabel!
+    @IBOutlet weak var spellDesc: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let url = URL(string: "https://www.dnd5eapi.co\(passedInformation.url)" )
+        let url = URL(string: "https://www.dnd5eapi.co\(passedInformation)" )
         if url != nil {
             downloadData(url:url!)
         }
+    }
+    func loadData(){
+        DispatchQueue.main.async {
+            self.spellTitle.text = self.thisSpell.name
+            self.spellDesc.text = self.thisSpell.desc.joined(separator: " ")
+        }
+ 
+        
+        
     }
     func decodeData(downloaded_data: Data){
          do {
            let downloaded_info = try JSONDecoder().decode(spellDetails.self, from:downloaded_data)
             self.thisSpell = downloaded_info
-            
+            loadData()
                } catch {
                    print("Decoding Error")
                }
@@ -104,6 +113,11 @@ class FirstViewController: UIViewController {
                 print(error)
             }
             }).resume()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        let spellDetailsView = self.tabBarController?.viewControllers![1] as! SecondViewController
+        spellDetailsView.passedSpell = thisSpell
     }
 
 

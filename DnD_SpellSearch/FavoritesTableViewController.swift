@@ -1,21 +1,35 @@
 //
-//  TableViewController.swift
+//  FavoritesTableViewController.swift
 //  DnD_SpellSearch
 //
-//  Created by student on 10/13/20.
+//  Created by student on 10/20/20.
 //  Copyright © 2020 Dillon Jones. All rights reserved.
 //
 
 import UIKit
+struct test: Codable{
+    init(){
+        index = "acid-arrow"
+        name = "Acid Arrow"
+        url = "/api/spells/acid-arrow"
+    }
+    let index: String
+    let name: String
+    let url: String
+}
+class FavoritesTableViewController: UITableViewController {
 
-class TableViewController: UITableViewController {
-
-    var passedList = [Spells]()
-    var selectedInformation:String = ""
+    var testFavs = [["Acid Arrow","/api/spells/acid-arrow"],["Cure Wounds","/api/spells/cure-wounds"]]
+    var selectedFav = ""
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
 
+        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
+
+        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
 
     // MARK: - Table view data source
 
@@ -26,34 +40,33 @@ class TableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return passedList.count
+        return testFavs.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-
         let cell_name = cell.viewWithTag(1) as! UILabel
-        cell_name.text = passedList[indexPath.row].name
-        
+        cell_name.text = testFavs[indexPath.row][0]
+        // Configure the cell...
+
         return cell
     }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier=="detail_seg" {
+        if segue.identifier=="favToDetail" {
             let TabController = segue.destination as! UITabBarController
             let TabView = TabController.viewControllers![0] as! FirstViewController
-            TabView.passedInformation = selectedInformation
+            TabView.passedInformation = selectedFav
         }
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedInformation = passedList[indexPath.row].url
-        self.performSegue(withIdentifier: "detail_seg", sender: self)
+        selectedFav = testFavs[indexPath.row][1]
+        self.performSegue(withIdentifier: "favToDetail", sender: self)
     }
-
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
