@@ -45,9 +45,36 @@ class SearchViewController: UIViewController {
             downloadData(url: url!)
         }
         
-        // Do any additional setup after loading the view.
+        // this one is to create event listener when click on return after typing
+        // it called function onReturn
+        self.searchField.addTarget(self, action: #selector(onReturn), for: UIControl.Event.editingDidEndOnExit)
+        
     }
-    
+    @IBAction func onReturn()
+    {
+        // not sure why, but need this line
+        self.searchField.resignFirstResponder()
+        
+        // Dillon's codes
+        
+        
+        guard searchField.text!.count > 0 else {
+            // if nothing in the textfield => show all
+            similarList = spellList
+            performSegue(withIdentifier: "table_seg", sender: self)
+            return
+        }
+        // if there is character in textfield => search
+        
+        let searchedText = searchField.text!.lowercased().replacingOccurrences(of: " ", with: "-")
+
+        for item in spellList {
+            if item.index.contains("\(searchedText)"){
+                similarList.append(item)
+            }
+        }
+        performSegue(withIdentifier: "table_seg", sender: self)
+    }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "table_seg" {
@@ -83,30 +110,29 @@ class SearchViewController: UIViewController {
     }
 
     
-    @IBAction func searchButton(_ sender: Any) {
-        guard searchField.text!.count > 0 else {
-                      let alert = UIAlertController(title: "Missing Spell", message: "Please enter a spell or press Show All", preferredStyle: .alert)
-                      alert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: { _ in self.dismiss(animated: true, completion: nil)
-                      }))
-                      self.present(alert, animated: true)
-                      return
-              }
-        let searchedText = searchField.text!.lowercased().replacingOccurrences(of: " ", with: "-")
-
-        for item in spellList {
-            if item.index.contains("\(searchedText)"){
-                similarList.append(item)
-            }
-        }
-        print(count)
-        performSegue(withIdentifier: "table_seg", sender: self)
-    }
-    
-    @IBAction func showAllButton(_ sender: Any) {
-        similarList = spellList
-        performSegue(withIdentifier: "table_seg", sender: self)
-        
-    }
+//    @IBAction func searchButton(_ sender: Any) {
+//        guard searchField.text!.count > 0 else {
+//                      let alert = UIAlertController(title: "Missing Spell", message: "Please enter a spell or press Show All", preferredStyle: .alert)
+//                      alert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: { _ in self.dismiss(animated: true, completion: nil)
+//                      }))
+//                      self.present(alert, animated: true)
+//                      return
+//              }
+//        let searchedText = searchField.text!.lowercased().replacingOccurrences(of: " ", with: "-")
+//
+//        for item in spellList {
+//            if item.index.contains("\(searchedText)"){
+//                similarList.append(item)
+//            }
+//        }
+//        performSegue(withIdentifier: "table_seg", sender: self)
+//    }
+//
+//    @IBAction func showAllButton(_ sender: Any) {
+//        similarList = spellList
+//        performSegue(withIdentifier: "table_seg", sender: self)
+//
+//    }
     
     /*
     // MARK: - Navigation
