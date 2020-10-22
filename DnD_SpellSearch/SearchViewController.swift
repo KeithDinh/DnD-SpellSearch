@@ -108,6 +108,16 @@ class SearchViewController: UIViewController {
             }
             }).resume()
     }
+    
+    //hide nav bar then show again once done.
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        navigationController?.setNavigationBarHidden(false, animated: true)
+    }
 
     
 //    @IBAction func searchButton(_ sender: Any) {

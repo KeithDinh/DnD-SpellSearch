@@ -19,7 +19,7 @@ struct test: Codable{
 }
 class FavoritesTableViewController: UITableViewController {
 
-    var testFavs = [["Acid Arrow","/api/spells/acid-arrow"],["Cure Wounds","/api/spells/cure-wounds"]]
+    var testFavs = [["Acid Arrow","/api/spells/acid-arrow"],["Cure Wounds","/api/spells/cure-wounds"],["Wish","/api/spells/wish"]]
     var selectedFav = ""
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,15 +57,24 @@ class FavoritesTableViewController: UITableViewController {
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier=="favToDetail" {
-            let TabController = segue.destination as! UITabBarController
-            let TabView = TabController.viewControllers![0] as! FirstViewController
-            TabView.passedInformation = selectedFav
+            let Details = segue.destination as! FirstViewController
+            Details.passedInformation = selectedFav
         }
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedFav = testFavs[indexPath.row][1]
         self.performSegue(withIdentifier: "favToDetail", sender: self)
+    }
+    
+    //hide nav bar then show again once done.
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        navigationController?.setNavigationBarHidden(false, animated: true)
     }
     /*
     // Override to support conditional editing of the table view.

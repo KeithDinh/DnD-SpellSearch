@@ -42,16 +42,15 @@ class TableViewController: UITableViewController {
         return 100
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier=="detail_seg" {
-            let TabController = segue.destination as! UITabBarController
-            let TabView = TabController.viewControllers![0] as! FirstViewController
-            TabView.passedInformation = selectedInformation
+        if segue.identifier=="tableToDetail" {
+            let Details = segue.destination as! FirstViewController
+            Details.passedInformation = selectedInformation
         }
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedInformation = passedList[indexPath.row].url
-        self.performSegue(withIdentifier: "detail_seg", sender: self)
+        self.performSegue(withIdentifier: "tableToDetail", sender: self)
     }
 
     /*

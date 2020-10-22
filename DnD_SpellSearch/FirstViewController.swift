@@ -69,13 +69,27 @@ struct spellDetails : Codable {
     let attack_type: String?
     let damage: damageType?
 }
+
+
+
 class FirstViewController: UIViewController {
 
     var passedInformation: String = ""
     var thisSpell = spellDetails()
     
-    @IBOutlet weak var spellTitle: UILabel!
+    @IBOutlet weak var navBar: UINavigationItem!
+    
     @IBOutlet weak var spellDesc: UITextView!
+    
+    @IBOutlet weak var spellSchool: UILabel!
+    
+    @IBOutlet weak var spellCastingTime: UILabel!
+    @IBOutlet weak var spellRange: UILabel!
+    
+    @IBOutlet weak var spellComponents: UILabel!
+    @IBOutlet weak var spellClasses: UILabel!
+    
+    @IBOutlet weak var spellExtra: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -85,15 +99,48 @@ class FirstViewController: UIViewController {
             downloadData(url:url!)
         }
     }
+    
     func loadData(){
         DispatchQueue.main.async {
-            self.spellTitle.text = self.thisSpell.name
-            self.spellDesc.text = self.thisSpell.desc.joined(separator: " ")
+            self.navBar.title = self.thisSpell.name
+            self.spellDesc.text = self.thisSpell.desc.joined(separator: "\n \n")
+            self.spellSchool.text = "Level \(self.thisSpell.level) \(self.thisSpell.school.name)"
+            self.spellCastingTime.text  = "Casting Time: \(self.thisSpell.casting_time)"
+            self.spellRange.text = "Range: \(self.thisSpell.range)"
+            self.spellComponents.text = "Components: \(self.thisSpell.components.joined())"
+            self.getClasses()
+            self.getExtra()
         }
- 
-        
+    }
+    func getComponents() {
+        var comp = ""
+        for item in thisSpell.components {
+
+            comp += item
+        }
+        print("here")
+        spellComponents.text = "Components: \(comp)"
         
     }
+    func getExtra() {
+        //need to work on getting info from api (damage at level/healing at level)
+    }
+    func getClasses() {
+        var classList = ""
+        var first = true
+        for items in thisSpell.classes {
+            if first == true {
+                first = false
+                classList += items.name
+            }
+            else {
+            classList += ",\(items.name)"
+            }
+            
+        }
+        spellClasses.text = "Classes: \(classList)"
+    }
+    
     func decodeData(downloaded_data: Data){
          do {
            let downloaded_info = try JSONDecoder().decode(spellDetails.self, from:downloaded_data)
@@ -113,11 +160,6 @@ class FirstViewController: UIViewController {
                 print(error)
             }
             }).resume()
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        let spellDetailsView = self.tabBarController?.viewControllers![1] as! SecondViewController
-        spellDetailsView.passedSpell = thisSpell
     }
 
 

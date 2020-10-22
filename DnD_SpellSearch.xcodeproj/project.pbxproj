@@ -69,6 +69,7 @@
 				3F56543025366BCF00348E3D /* AppDelegate.swift */,
 				3F56543225366BCF00348E3D /* SceneDelegate.swift */,
 				3F56544B25366DBD00348E3D /* SearchViewController.swift */,
+				3F740C7C253F8E3100044FFE /* FavoritesTableViewController.swift */,
 				3F56544925366D9F00348E3D /* TableViewController.swift */,
 				3F56543425366BCF00348E3D /* FirstViewController.swift */,
 				3F56543625366BCF00348E3D /* SecondViewController.swift */,
@@ -77,7 +78,6 @@
 				3F56544025366BD300348E3D /* LaunchScreen.storyboard */,
 				3F56544325366BD300348E3D /* Info.plist */,
 				3F56543B25366BCF00348E3D /* DnD_SpellSearch.xcdatamodeld */,
-				3F740C7C253F8E3100044FFE /* FavoritesTableViewController.swift */,
 			);
 			path = DnD_SpellSearch;
 			sourceTree = "<group>";
