@@ -92,7 +92,6 @@ class SearchViewController: UIViewController {
             for items in tempList{
                 spellList.append(items)
             }
-         //   DispatchQueue.main.async {}
                } catch {
                    print("Decoding Error")
                }

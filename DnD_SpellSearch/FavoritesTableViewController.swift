@@ -7,20 +7,12 @@
 //
 
 import UIKit
-struct test: Codable{
-    init(){
-        index = "acid-arrow"
-        name = "Acid Arrow"
-        url = "/api/spells/acid-arrow"
-    }
-    let index: String
-    let name: String
-    let url: String
-}
-class FavoritesTableViewController: UITableViewController {
+import CoreData
 
-    var testFavs = [["Acid Arrow","/api/spells/acid-arrow"],["Cure Wounds","/api/spells/cure-wounds"],["Wish","/api/spells/wish"]]
-    var selectedFav = ""
+class FavoritesTableViewController: UITableViewController {
+    var Favorite: [NSManagedObject] = []
+    //var testFavs = [["Acid Arrow","/api/spells/acid-arrow"],["Cure Wounds","/api/spells/cure-wounds"],["Wish","/api/spells/wish"]]
+    var selectedFav: String = ""
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -40,14 +32,15 @@ class FavoritesTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return testFavs.count
+        return Favorite.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let Fav = Favorite[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         let cell_name = cell.viewWithTag(1) as! UILabel
-        cell_name.text = testFavs[indexPath.row][0]
+        cell_name.text = Fav.value(forKeyPath: "name") as? String
         // Configure the cell...
 
         return cell
@@ -63,10 +56,30 @@ class FavoritesTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedFav = testFavs[indexPath.row][1]
+        let fav = Favorite[indexPath.row]
+        selectedFav = fav.value(forKeyPath: "url") as! String
         self.performSegue(withIdentifier: "favToDetail", sender: self)
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        //1
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        let managedContent = appDelegate.persistentContainer.viewContext
+        //2
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Favorite")
+        //3
+        do {
+            Favorite = try managedContent.fetch(fetchRequest)
+            print("fetch complete")
+        } catch let error as NSError{
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
     //hide nav bar then show again once done.
     override func viewDidAppear(_ animated: Bool) {
         super.viewWillAppear(true)

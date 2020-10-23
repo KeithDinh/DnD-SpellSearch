@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import CoreData
+
 struct Type: Codable {
     init() {
         name = ""
@@ -50,6 +52,7 @@ struct spellDetails : Codable {
         damage = damageType()
         school = schoolType()
         classes = []
+        url = ""
     }
     let name: String
     let desc: [String]
@@ -62,6 +65,7 @@ struct spellDetails : Codable {
     let level: Int
     let school: schoolType
     let classes: [classType]
+    let url: String
     
     //items found to be optional
     let higher_level: [String]?
@@ -74,6 +78,7 @@ struct spellDetails : Codable {
 
 class FirstViewController: UIViewController {
 
+    var favorites:[NSManagedObject] = []
     var passedInformation: String = ""
     var thisSpell = spellDetails()
     
@@ -93,11 +98,35 @@ class FirstViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         let url = URL(string: "https://www.dnd5eapi.co\(passedInformation)" )
         if url != nil {
             downloadData(url:url!)
         }
+    }
+    @IBAction func homeButton(_ sender: Any) {
+        self.navigationController?.popToRootViewController(animated: true)
+    }
+    @IBAction func likeButton(_ sender: Any) {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        //step 1
+        let managedContent = appDelegate.persistentContainer.viewContext
+        //2
+        let entity = NSEntityDescription.entity(forEntityName: "Favorite", in: managedContent)!
+        let fav = NSManagedObject(entity: entity, insertInto: managedContent)
+        //3
+        fav.setValue(thisSpell.name, forKey: "name")
+        fav.setValue(thisSpell.url, forKey: "url")
+        //4
+        do {
+            try managedContent.save()
+            favorites.append(fav)
+            print("Save complete")
+        } catch let error as NSError{
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+
     }
     
     func loadData(){

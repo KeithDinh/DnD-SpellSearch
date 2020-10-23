@@ -150,7 +150,20 @@
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Descriptions" selectedImage="info.circle" catalog="system" id="acW-dT-cKf"/>
-                    <navigationItem key="navigationItem" id="9RD-eH-gLL"/>
+                    <navigationItem key="navigationItem" id="9RD-eH-gLL">
+                        <rightBarButtonItems>
+                            <barButtonItem title="Home" id="Y95-5I-CjW">
+                                <connections>
+                                    <action selector="homeButton:" destination="9pv-A4-QxB" id="mmE-61-gDv"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Item" image="heart" catalog="system" style="plain" id="8VC-Yq-211">
+                                <connections>
+                                    <action selector="likeButton:" destination="9pv-A4-QxB" id="HhS-T5-ASy"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
                     <size key="freeformSize" width="375" height="1000"/>
                     <connections>
                         <outlet property="navBar" destination="9RD-eH-gLL" id="qOm-Gv-d2z"/>
@@ -274,7 +287,6 @@
         <!--Item-->
         <scene sceneID="eIk-Ge-sQC">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="T3P-ns-GIV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController id="f5z-E8-5Kj" customClass="SearchViewController" customModule="DnD_SpellSearch" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uHO-i8-L4A">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -368,6 +380,7 @@
                         <segue destination="5zU-Nm-2ko" kind="show" identifier="table_seg" id="bVy-vh-Mu8"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="T3P-ns-GIV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-728.79999999999995" y="-204.64767616191907"/>
         </scene>
@@ -412,9 +425,10 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="MUQ-0o-pqB"/>
+        <segue reference="K5t-Sd-M5k"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="heart" catalog="system" width="128" height="109"/>
         <image name="heart.fill" catalog="system" width="128" height="109"/>
         <image name="info.circle" catalog="system" width="128" height="121"/>
         <image name="second" width="30" height="30"/>
