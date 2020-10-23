@@ -110,8 +110,13 @@ class SearchViewController: UIViewController {
     
     //hide nav bar then show again once done.
     override func viewDidAppear(_ animated: Bool) {
+        let nav = self.navigationController?.navigationBar
+        nav?.barStyle = UIBarStyle.black
+        nav?.tintColor = UIColor.white
         super.viewWillAppear(true)
         navigationController?.setNavigationBarHidden(true, animated: true)
+
+
     }
     override func viewDidDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)

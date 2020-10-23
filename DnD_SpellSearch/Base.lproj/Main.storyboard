@@ -231,10 +231,10 @@
             </objects>
             <point key="canvasLocation" x="154.40000000000001" y="-203.74812593703149"/>
         </scene>
-        <!--Favorites Table View Controller-->
+        <!--Favorites-->
         <scene sceneID="9nS-6a-XQi">
             <objects>
-                <tableViewController id="3Pc-vY-ZAg" customClass="FavoritesTableViewController" customModule="DnD_SpellSearch" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Favorites" id="3Pc-vY-ZAg" customClass="FavoritesTableViewController" customModule="DnD_SpellSearch" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="5jH-bQ-uZl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

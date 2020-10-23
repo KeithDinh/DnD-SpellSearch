@@ -15,7 +15,6 @@ class FavoritesTableViewController: UITableViewController {
     var selectedFav: String = ""
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -80,15 +79,8 @@ class FavoritesTableViewController: UITableViewController {
             self.tableView.reloadData()
         }
     }
-    //hide nav bar then show again once done.
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        navigationController?.setNavigationBarHidden(true, animated: true)
-    }
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewWillDisappear(true)
-        navigationController?.setNavigationBarHidden(false, animated: true)
-    }
+
+
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
