@@ -26,13 +26,35 @@ struct Root: Codable {
     let count: Int
     let results: [Spells]
 }
+struct Favorite: Codable{
+    init(){
+        name = "Acid Arrow"
+        url = "/api/spells/acid-arrow"
+    }
+    init(n: String, u: String)
+    {
+        name = n
+        url = u
+    }
+    var name: String
+    var url: String
+}
 
-
-class SearchViewController: UIViewController {
+class SearchViewController: UIViewController, favoriteDelegation {
+    func toggleFavorite(name: String, url: String, isAdding: Bool) {
+        if isAdding {
+            favoriteList.append(Favorite(n: name, u: url))
+        } else {
+            if let index = favoriteList.firstIndex(where: {$0.name == name}) {
+                favoriteList.remove(at: index)
+            }
+        }
+    }
+    var favoriteList = [Favorite]()
     
     var spellList = [Spells]()
     var similarList = [Spells]()
-
+    
     
     @IBOutlet weak var searchField: UITextField!
     
@@ -80,10 +102,10 @@ class SearchViewController: UIViewController {
         if segue.identifier == "table_seg" {
             let TableView = segue.destination as! TableViewController
             TableView.passedList = similarList
+            TableView.favoriteList = favoriteList
             self.similarList = []
         }
     }
-    
     
     func decodeData(downloaded_data: Data){
          do {
@@ -93,9 +115,9 @@ class SearchViewController: UIViewController {
                 spellList.append(items)
             }
          //   DispatchQueue.main.async {}
-               } catch {
-                   print("Decoding Error")
-               }
+           } catch {
+               print("Decoding Error")
+           }
         
     }
     func downloadData(url: URL) {
@@ -107,6 +129,21 @@ class SearchViewController: UIViewController {
                 print(error)
             }
             }).resume()
+    }
+    
+    //hide nav bar then show again once done.
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        let favoriteView = self.tabBarController?.viewControllers![1] as! FavoritesTableViewController
+        favoriteView.favoriteList = self.favoriteList
+        
+        
+        super.viewWillDisappear(true)
+        navigationController?.setNavigationBarHidden(false, animated: true)
+        
     }
 
     
