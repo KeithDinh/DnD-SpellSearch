@@ -108,6 +108,12 @@ class FirstViewController: UIViewController {
 
     @IBAction func homeButton(_ sender: Any) {
         self.navigationController?.popToRootViewController(animated: true)
+        
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        let home = storyboard.instantiateViewController(withIdentifier: "Home") as! SearchViewController
+//        self.navigationController?.pushViewController(home, animated: true)
+//        self.navigationController?.isNavigationBarHidden = false
+
     }
     func addToFavorite(){
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
@@ -138,7 +144,10 @@ class FirstViewController: UIViewController {
         let managedContent = appDelegate.persistentContainer.viewContext
         //2
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Favorite")
+        
+        // return the matching spell name
         fetchRequest.predicate = NSPredicate(format: "name = %@", thisSpell.name)
+        
         let result = try? managedContent.fetch(fetchRequest)
         let resData = result!
 
@@ -147,8 +156,9 @@ class FirstViewController: UIViewController {
         }
         do {
             try managedContent.save()
+            // deactive the heart
             setFavStatus(status:false)
-        }catch let error as NSError {
+        }   catch let error as NSError {
             print("error in save \(error), \(error.userInfo)")
         }
     }
@@ -191,7 +201,10 @@ class FirstViewController: UIViewController {
         let managedContent = appDelegate.persistentContainer.viewContext
         //2
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Favorite")
+        
+        // return matching spell name
         fetchRequest.predicate = NSPredicate(format: "name = %@", thisSpell.name)
+        // if match there should be only 1 matching
         fetchRequest.fetchLimit = 1
         
         do {

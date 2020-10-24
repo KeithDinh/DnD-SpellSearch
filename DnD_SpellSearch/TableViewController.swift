@@ -19,17 +19,6 @@ class TableViewController: UITableViewController {
         tableView.backgroundView = UIImageView(image: UIImage(named: "urn_aaid_sc_US_1777706d-7d97-4e70-90b7-1a206e1e9534"))
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        
-//        // navigationbar background color
-//        navigationController?.navigationBar.barTintColor = .black
-//
-//        // set title color to white
-//        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
-//
-//        // set battery icon, time, network service to white
-//        navigationController?.navigationBar.barStyle = .black
-    }
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -59,7 +48,7 @@ class TableViewController: UITableViewController {
         return cell
     }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return 80
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier=="tableToDetail" {

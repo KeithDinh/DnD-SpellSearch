@@ -78,7 +78,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" scrollEnabled="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="FKK-Et-BX8">
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" scrollEnabled="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="FKK-Et-BX8">
                                                 <rect key="frame" x="8" y="170" width="359" height="200"/>
                                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -179,7 +179,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1104.8" y="-89.055472263868069"/>
+            <point key="canvasLocation" x="1167" y="158"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="sU3-Hb-TNz">
@@ -230,7 +230,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u9X-Po-NLp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="154.40000000000001" y="-203.74812593703149"/>
+            <point key="canvasLocation" x="154" y="934"/>
         </scene>
         <!--Favorites-->
         <scene sceneID="9nS-6a-XQi">
@@ -279,12 +279,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HnZ-mD-8fl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-729" y="492"/>
+            <point key="canvasLocation" x="-730.39999999999998" y="-587.85607196401804"/>
         </scene>
         <!--Search View Controller-->
         <scene sceneID="eIk-Ge-sQC">
             <objects>
-                <viewController id="f5z-E8-5Kj" customClass="SearchViewController" customModule="DnD_SpellSearch" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Home" id="f5z-E8-5Kj" customClass="SearchViewController" customModule="DnD_SpellSearch" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uHO-i8-L4A">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -379,7 +379,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T3P-ns-GIV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-728.79999999999995" y="-204.64767616191907"/>
+            <point key="canvasLocation" x="-730" y="935"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Cyg-Jd-Z7o">
@@ -413,6 +413,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="f5z-E8-5Kj" kind="relationship" relationship="viewControllers" id="hE3-tB-SvL"/>
+                        <segue destination="T7b-wr-tHn" kind="relationship" relationship="viewControllers" id="ubM-uT-IhW"/>
                         <segue destination="3Pc-vY-ZAg" kind="relationship" relationship="viewControllers" id="mlO-vb-ah8"/>
                     </connections>
                 </tabBarController>
@@ -420,14 +421,64 @@
             </objects>
             <point key="canvasLocation" x="-1530" y="159"/>
         </scene>
+        <!--Favorites-->
+        <scene sceneID="tLm-CM-XmZ">
+            <objects>
+                <tableViewController title="Favorites" id="T7b-wr-tHn" customClass="AllTableViewController" customModule="DnD_SpellSearch" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="i1g-Vy-fRb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="86" id="H2n-xf-rwd">
+                                <rect key="frame" x="0.0" y="28" width="375" height="86"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="H2n-xf-rwd" id="OIb-Qc-jem">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="86"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="qNj-2l-6f7">
+                                            <rect key="frame" x="158" y="28" width="59.5" height="30"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hXT-d8-eym">
+                                                    <rect key="frame" x="0.0" y="0.0" width="59.5" height="30"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                    <color key="textColor" red="0.34509803919999998" green="0.090196078430000007" blue="0.050980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="qNj-2l-6f7" firstAttribute="centerY" secondItem="OIb-Qc-jem" secondAttribute="centerY" id="OPz-7Z-wKB"/>
+                                        <constraint firstItem="qNj-2l-6f7" firstAttribute="centerX" secondItem="OIb-Qc-jem" secondAttribute="centerX" id="fPR-BP-KHc"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="T7b-wr-tHn" id="NA4-7E-cJb"/>
+                            <outlet property="delegate" destination="T7b-wr-tHn" id="GM2-N2-VLa"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="All Spells" image="list.dash" catalog="system" selectedImage="second" id="zb9-d2-aez"/>
+                    <connections>
+                        <segue destination="9pv-A4-QxB" kind="show" identifier="allToDetail" id="efe-ww-GhW"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SG9-fV-cHN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-730" y="159"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="MUQ-0o-pqB"/>
+        <segue reference="K5t-Sd-M5k"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
     <resources>
         <image name="heart" catalog="system" width="128" height="109"/>
         <image name="info.circle" catalog="system" width="128" height="121"/>
+        <image name="list.dash" catalog="system" width="128" height="85"/>
         <image name="second" width="30" height="30"/>
         <image name="urn_aaid_sc_US_1777706d-7d97-4e70-90b7-1a206e1e9534" width="375" height="570"/>
     </resources>

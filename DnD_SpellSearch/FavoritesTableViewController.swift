@@ -10,6 +10,8 @@ import UIKit
 import CoreData
 
 class FavoritesTableViewController: UITableViewController {
+    
+    // initialize the core data object
     var Favorite: [NSManagedObject] = []
     //var testFavs = [["Acid Arrow","/api/spells/acid-arrow"],["Cure Wounds","/api/spells/cure-wounds"],["Wish","/api/spells/wish"]]
     var selectedFav: String = ""
@@ -22,6 +24,8 @@ class FavoritesTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
+    
+    // Hide the navigation bar
     override func viewDidAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         navigationController?.setNavigationBarHidden(true, animated: true)
@@ -31,6 +35,7 @@ class FavoritesTableViewController: UITableViewController {
         navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
+
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -96,7 +101,45 @@ class FavoritesTableViewController: UITableViewController {
         }
     }
 
+    // Override to support editing the table view.
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            // Delete the row from the data source
+            let fav = Favorite[indexPath.row]
+            selectedFav = fav.value(forKeyPath: "name") as! String
+            //1
+            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+                return
+            }
+            //2
+            let managedContent = appDelegate.persistentContainer.viewContext
+            //3
+            let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Favorite")
+            fetchRequest.predicate = NSPredicate(format: "name == %@", selectedFav)
+            let result = try? managedContent.fetch(fetchRequest)
+            let resData = result!
 
+            for object in resData {
+                managedContent.delete(object)
+            }
+            do {
+                try managedContent.save()
+                if let index = Favorite.firstIndex(of: fav) {
+                    Favorite.remove(at: index)
+                }
+            }   catch let error as NSError {
+                print("error in save \(error), \(error.userInfo)")
+            }
+            
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+        /*
+        else if editingStyle == .insert {
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+        } */
+    }
+    
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -105,17 +148,8 @@ class FavoritesTableViewController: UITableViewController {
     }
     */
 
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
+
+
 
     /*
     // Override to support rearranging the table view.
