@@ -373,6 +373,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="search" id="FTt-6y-IaX"/>
                     <connections>
+                        <outlet property="schoolField" destination="7o7-rD-IUi" id="gfL-iS-i5Y"/>
                         <outlet property="searchField" destination="8Fo-5J-SPo" id="nH4-nM-egt"/>
                         <segue destination="5zU-Nm-2ko" kind="show" identifier="table_seg" id="bVy-vh-Mu8"/>
                     </connections>

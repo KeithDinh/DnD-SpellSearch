@@ -3,7 +3,7 @@
 //  DnD_SpellSearch
 //
 //  Created by student on 10/13/20.
-//  Copyright © 2020 Dillon Jones. All rights reserved.
+//  Copyright © 2020 Dillon Jones & Kiet Dinh. All rights reserved.
 //
 //heloo
 import UIKit

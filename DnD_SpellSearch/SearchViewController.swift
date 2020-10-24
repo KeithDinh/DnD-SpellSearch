@@ -3,9 +3,9 @@
 //  DnD_SpellSearch
 //
 //  Created by student on 10/13/20.
-//  Copyright © 2020 Dillon Jones. All rights reserved.
+//  Copyright © 2020 Dillon Jones & Kiet Dinh. All rights reserved.
 //
-
+// https://www.dnd5eapi.co/
 import UIKit
 
 struct Spells: Codable{
@@ -28,23 +28,43 @@ struct Root: Codable {
 }
 
 
-class SearchViewController: UIViewController {
+class SearchViewController: UIViewController, UITextFieldDelegate {
     
+    var schoolList = [Spells]()
     var spellList = [Spells]()
     var similarList = [Spells]()
+    
     @IBOutlet weak var searchField: UITextField!
+    @IBOutlet var schoolField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let url = URL(string: "https://www.dnd5eapi.co/api/spells")
-        if url != nil {
-            downloadData(url: url!)
+        let spellUrl = URL(string: "https://www.dnd5eapi.co/api/spells")
+        if spellUrl != nil {
+            downloadData(url: spellUrl!, type: "spell")
+        }
+        let schoolUrl = URL(string: "https://www.dnd5eapi.co/api/magic-schools")
+        if schoolUrl != nil {
+            downloadData(url: schoolUrl!, type: "school")
         }
         // this one is to create event listener when click on return after typing
         // it called function onReturn
         self.searchField.addTarget(self, action: #selector(onReturn), for: UIControl.Event.editingDidEndOnExit)
-        
+        schoolField.delegate = self
     }
+    
+    // WARNING
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.resignFirstResponder()
+        let actionSheetAlert = UIAlertController(title: "Pick a School", message: "", preferredStyle: .actionSheet)
+        for school in schoolList {
+            actionSheetAlert.addAction(UIAlertAction(title: school.name, style: .default, handler: { _ in
+                self.schoolField.text = school.name
+            }))
+        }
+        self.present(actionSheetAlert, animated: true, completion: nil)
+    }
+    
     @IBAction func onReturn()
     {
         // not sure why, but need this line
@@ -81,23 +101,32 @@ class SearchViewController: UIViewController {
     }
     
     
-    func decodeData(downloaded_data: Data){
+    func decodeData(downloaded_data: Data, type: String){
          do
          {
             let downloaded_info = try JSONDecoder().decode(Root.self, from:downloaded_data)
             let tempList = downloaded_info.results
-            for items in tempList{
-                spellList.append(items)
+            if type == "spell"
+            {
+                for items in tempList{
+                    spellList.append(items)
+                }
+            }
+            else if type == "school"
+            {
+                for items in tempList{
+                    schoolList.append(items)
+                }
             }
             
          } catch {print("Decoding Error")}
         
     }
-    func downloadData(url: URL) {
+    func downloadData(url: URL, type: String) {
         let _ = URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
             //decode
             if let downloaded_data = data {
-                self.decodeData(downloaded_data: downloaded_data)
+                self.decodeData(downloaded_data: downloaded_data, type: type)
             } else if let error = error {
                 print(error)
             }

@@ -3,7 +3,7 @@
 //  DnD_SpellSearch
 //
 //  Created by student on 10/20/20.
-//  Copyright © 2020 Dillon Jones. All rights reserved.
+//  Copyright © 2020 Dillon Jones & Kiet Dinh. All rights reserved.
 //
 
 import UIKit
@@ -102,11 +102,13 @@ class FavoritesTableViewController: UITableViewController {
     }
 
     // Override to support editing the table view.
+    // Ref: https://www.hackingwithswift.com/example-code/uikit/how-to-swipe-to-delete-uitableviewcells
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
             let fav = Favorite[indexPath.row]
             selectedFav = fav.value(forKeyPath: "name") as! String
+            // * Core Data Removing Procedure
             //1
             guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
                 return
@@ -124,13 +126,14 @@ class FavoritesTableViewController: UITableViewController {
             }
             do {
                 try managedContent.save()
+                // Update Favorite list after removing
                 if let index = Favorite.firstIndex(of: fav) {
                     Favorite.remove(at: index)
                 }
             }   catch let error as NSError {
                 print("error in save \(error), \(error.userInfo)")
             }
-            
+            // * Swipe removing
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
         /*
