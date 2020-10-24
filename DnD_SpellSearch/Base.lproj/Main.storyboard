@@ -157,7 +157,7 @@
                                     <action selector="homeButton:" destination="9pv-A4-QxB" id="mmE-61-gDv"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="Item" image="heart" catalog="system" style="plain" id="8VC-Yq-211">
+                            <barButtonItem image="heart" catalog="system" style="plain" id="8VC-Yq-211">
                                 <connections>
                                     <action selector="likeButton:" destination="9pv-A4-QxB" id="HhS-T5-ASy"/>
                                 </connections>
@@ -166,6 +166,7 @@
                     </navigationItem>
                     <size key="freeformSize" width="375" height="1000"/>
                     <connections>
+                        <outlet property="favButton" destination="8VC-Yq-211" id="IRB-0R-6ZH"/>
                         <outlet property="navBar" destination="9RD-eH-gLL" id="qOm-Gv-d2z"/>
                         <outlet property="spellCastingTime" destination="GuV-eE-VXt" id="H9h-Ju-biP"/>
                         <outlet property="spellClasses" destination="Pfc-h0-9Ay" id="RnW-Ab-2xj"/>

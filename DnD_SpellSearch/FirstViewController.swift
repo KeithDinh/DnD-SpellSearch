@@ -78,10 +78,12 @@ struct spellDetails : Codable {
 
 class FirstViewController: UIViewController {
 
-    var favorites:[NSManagedObject] = []
+    var Favorite:[NSManagedObject] = []
+    var isFav: Bool = false
     var passedInformation: String = ""
     var thisSpell = spellDetails()
     
+    @IBOutlet weak var favButton: UIBarButtonItem!
     @IBOutlet weak var navBar: UINavigationItem!
     
     @IBOutlet weak var spellDesc: UITextView!
@@ -103,10 +105,11 @@ class FirstViewController: UIViewController {
             downloadData(url:url!)
         }
     }
+
     @IBAction func homeButton(_ sender: Any) {
         self.navigationController?.popToRootViewController(animated: true)
     }
-    @IBAction func likeButton(_ sender: Any) {
+    func addToFavorite(){
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return
         }
@@ -121,12 +124,49 @@ class FirstViewController: UIViewController {
         //4
         do {
             try managedContent.save()
-            favorites.append(fav)
-            print("Save complete")
+            Favorite.append(fav)
+            setFavStatus(status: true)
         } catch let error as NSError{
             print("Could not save. \(error), \(error.userInfo)")
         }
+    }
+    func removeFromFavorite(){
+        //1
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        let managedContent = appDelegate.persistentContainer.viewContext
+        //2
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Favorite")
+        fetchRequest.predicate = NSPredicate(format: "name = %@", thisSpell.name)
+        let result = try? managedContent.fetch(fetchRequest)
+        let resData = result!
 
+        for object in resData {
+            managedContent.delete(object)
+        }
+        do {
+            try managedContent.save()
+            setFavStatus(status:false)
+        }catch let error as NSError {
+            print("error in save \(error), \(error.userInfo)")
+        }
+    }
+    @IBAction func likeButton(_ sender: Any) {
+        if isFav {
+            removeFromFavorite()
+        }else {
+            addToFavorite()
+        }
+    }
+    func setFavStatus(status:Bool){
+        isFav = status
+        if status {
+            favButton.image = UIImage(systemName: "heart.fill")
+        } else {
+            favButton.image = UIImage(systemName: "heart")
+        }
+ 
     }
     
     func loadData(){
@@ -139,6 +179,32 @@ class FirstViewController: UIViewController {
             self.spellComponents.text = "Components: \(self.thisSpell.components.joined())"
             self.getClasses()
             self.getExtra()
+            self.checkFav()
+        }
+    }
+    func checkFav(){
+        //1
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        let managedContent = appDelegate.persistentContainer.viewContext
+        //2
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Favorite")
+        fetchRequest.predicate = NSPredicate(format: "name = %@", thisSpell.name)
+        fetchRequest.fetchLimit = 1
+        
+        do {
+            let count = try managedContent.count(for: fetchRequest)
+            if count > 0 {
+                setFavStatus(status: true)
+                return
+            }else {
+                setFavStatus(status: false)
+                return
+            }
+        } catch let error as NSError {
+            print("FavCheck Error \(error), \(error.userInfo)")
+            return
         }
     }
     func getComponents() {
@@ -190,6 +256,10 @@ class FirstViewController: UIViewController {
             }
             }).resume()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
 
 
 }
