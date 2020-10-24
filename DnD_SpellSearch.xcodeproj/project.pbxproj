@@ -10,7 +10,6 @@
 		3F56543125366BCF00348E3D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F56543025366BCF00348E3D /* AppDelegate.swift */; };
 		3F56543325366BCF00348E3D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F56543225366BCF00348E3D /* SceneDelegate.swift */; };
 		3F56543525366BCF00348E3D /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F56543425366BCF00348E3D /* FirstViewController.swift */; };
-		3F56543725366BCF00348E3D /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F56543625366BCF00348E3D /* SecondViewController.swift */; };
 		3F56543A25366BCF00348E3D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F56543825366BCF00348E3D /* Main.storyboard */; };
 		3F56543D25366BCF00348E3D /* DnD_SpellSearch.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3F56543B25366BCF00348E3D /* DnD_SpellSearch.xcdatamodeld */; };
 		3F56543F25366BD300348E3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F56543E25366BD300348E3D /* Assets.xcassets */; };
@@ -25,7 +24,6 @@
 		3F56543025366BCF00348E3D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3F56543225366BCF00348E3D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		3F56543425366BCF00348E3D /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		3F56543625366BCF00348E3D /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		3F56543925366BCF00348E3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3F56543C25366BCF00348E3D /* DnD_SpellSearch.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DnD_SpellSearch.xcdatamodel; sourceTree = "<group>"; };
 		3F56543E25366BD300348E3D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -72,7 +70,6 @@
 				3F740C7C253F8E3100044FFE /* FavoritesTableViewController.swift */,
 				3F56544925366D9F00348E3D /* TableViewController.swift */,
 				3F56543425366BCF00348E3D /* FirstViewController.swift */,
-				3F56543625366BCF00348E3D /* SecondViewController.swift */,
 				3F56543825366BCF00348E3D /* Main.storyboard */,
 				3F56543E25366BD300348E3D /* Assets.xcassets */,
 				3F56544025366BD300348E3D /* LaunchScreen.storyboard */,
@@ -157,7 +154,6 @@
 				3F56544C25366DBD00348E3D /* SearchViewController.swift in Sources */,
 				3F56544A25366D9F00348E3D /* TableViewController.swift in Sources */,
 				3F740C7D253F8E3100044FFE /* FavoritesTableViewController.swift in Sources */,
-				3F56543725366BCF00348E3D /* SecondViewController.swift in Sources */,
 				3F56543525366BCF00348E3D /* FirstViewController.swift in Sources */,
 				3F56543125366BCF00348E3D /* AppDelegate.swift in Sources */,
 				3F56543325366BCF00348E3D /* SceneDelegate.swift in Sources */,

@@ -32,11 +32,7 @@ class SearchViewController: UIViewController {
     
     var spellList = [Spells]()
     var similarList = [Spells]()
-
-    
     @IBOutlet weak var searchField: UITextField!
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -110,9 +106,16 @@ class SearchViewController: UIViewController {
     
     //hide nav bar then show again once done.
     override func viewDidAppear(_ animated: Bool) {
-        let nav = self.navigationController?.navigationBar
-        nav?.barStyle = UIBarStyle.black
-        nav?.tintColor = UIColor.white
+        
+        // navigationbar background color
+        navigationController?.navigationBar.barTintColor = .black
+        
+        // set title color to white
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
+        
+        // set battery icon, time, network service to white
+        navigationController?.navigationBar.barStyle = .black
+        
         super.viewWillAppear(true)
         navigationController?.setNavigationBarHidden(true, animated: true)
 

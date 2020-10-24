@@ -152,6 +152,7 @@ class FirstViewController: UIViewController {
             print("error in save \(error), \(error.userInfo)")
         }
     }
+    
     @IBAction func likeButton(_ sender: Any) {
         if isFav {
             removeFromFavorite()
@@ -159,6 +160,7 @@ class FirstViewController: UIViewController {
             addToFavorite()
         }
     }
+    
     func setFavStatus(status:Bool){
         isFav = status
         if status {
@@ -166,7 +168,6 @@ class FirstViewController: UIViewController {
         } else {
             favButton.image = UIImage(systemName: "heart")
         }
- 
     }
     
     func loadData(){

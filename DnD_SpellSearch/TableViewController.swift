@@ -14,9 +14,22 @@ class TableViewController: UITableViewController {
     var selectedInformation:String = ""
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // add the background image for the tableView
+        tableView.backgroundView = UIImageView(image: UIImage(named: "urn_aaid_sc_US_1777706d-7d97-4e70-90b7-1a206e1e9534"))
     }
 
-
+    override func viewDidAppear(_ animated: Bool) {
+        
+//        // navigationbar background color
+//        navigationController?.navigationBar.barTintColor = .black
+//
+//        // set title color to white
+//        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
+//
+//        // set battery icon, time, network service to white
+//        navigationController?.navigationBar.barStyle = .black
+    }
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -32,8 +45,15 @@ class TableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-
+        
+        // set cell background to transparent
+        cell.layer.backgroundColor = UIColor.clear.cgColor
+        
         let cell_name = cell.viewWithTag(1) as! UILabel
+        
+        // set font type to Times New Roman, size = 30
+        cell_name.font = UIFont(name: "Times New Roman", size: 25)
+        
         cell_name.text = passedList[indexPath.row].name
         
         return cell
