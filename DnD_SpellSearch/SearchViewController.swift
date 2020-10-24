@@ -33,7 +33,6 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
     var schoolList = [Spells]()
     var spellList = [Spells]()
     var similarList = [Spells]()
-    
     @IBOutlet weak var searchField: UITextField!
     @IBOutlet var schoolField: UITextField!
     override func viewDidLoad() {
@@ -57,11 +56,16 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.resignFirstResponder()
         let actionSheetAlert = UIAlertController(title: "Pick a School", message: "", preferredStyle: .actionSheet)
+        actionSheetAlert.addAction(UIAlertAction(title: "All Schools", style: .default, handler: {_ in
+            self.schoolField.text = ""
+        }))
         for school in schoolList {
             actionSheetAlert.addAction(UIAlertAction(title: school.name, style: .default, handler: { _ in
                 self.schoolField.text = school.name
+                
             }))
         }
+
         self.present(actionSheetAlert, animated: true, completion: nil)
     }
     
@@ -81,9 +85,8 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
             return
         }
         // if there is character in textfield => search
-        
         let searchedText = searchField.text!.lowercased().replacingOccurrences(of: " ", with: "-")
-
+        
         for item in spellList {
             if item.index.contains("\(searchedText)"){
                 similarList.append(item)
@@ -132,7 +135,6 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
             }
         }).resume()
     }
-    
     //hide nav bar then show again once done.
     override func viewDidAppear(_ animated: Bool) {
         
@@ -144,7 +146,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
         
         // set battery icon, time, network service to white
         navigationController?.navigationBar.barStyle = .black
-        
+
         super.viewWillAppear(true)
         navigationController?.setNavigationBarHidden(true, animated: true)
 
@@ -159,7 +161,6 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
         super.viewWillDisappear(true)
         navigationController?.setNavigationBarHidden(false, animated: true)
     }
-    
     func createAlert(title: String, message: String)
     {
         // display an message to the users (basically an alert window)

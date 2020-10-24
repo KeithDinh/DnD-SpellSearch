@@ -15,6 +15,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bWr-xW-op5" userLabel="Black">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </imageView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="26h-kY-bdd">
                                 <rect key="frame" x="0.0" y="44" width="375" height="956"/>
                                 <subviews>
@@ -143,16 +147,20 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="26h-kY-bdd" firstAttribute="trailing" secondItem="PQr-Ze-W5v" secondAttribute="trailing" id="5Tn-Zg-Zuf"/>
+                            <constraint firstItem="bWr-xW-op5" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="6Vw-yw-vLQ"/>
+                            <constraint firstItem="bWr-xW-op5" firstAttribute="trailing" secondItem="PQr-Ze-W5v" secondAttribute="trailing" id="HfP-Wj-PNx"/>
                             <constraint firstItem="26h-kY-bdd" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="eKy-w0-cqe"/>
                             <constraint firstItem="26h-kY-bdd" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" id="gMM-v6-eM6"/>
+                            <constraint firstItem="bWr-xW-op5" firstAttribute="top" secondItem="tsR-hK-woN" secondAttribute="top" id="qjN-YD-YrF"/>
                             <constraint firstItem="26h-kY-bdd" firstAttribute="bottom" secondItem="PQr-Ze-W5v" secondAttribute="bottom" id="ryx-N5-M0T"/>
+                            <constraint firstItem="PQr-Ze-W5v" firstAttribute="bottom" secondItem="bWr-xW-op5" secondAttribute="bottom" id="wp8-Ut-fW7"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Descriptions" selectedImage="info.circle" catalog="system" id="acW-dT-cKf"/>
                     <navigationItem key="navigationItem" id="9RD-eH-gLL">
                         <rightBarButtonItems>
-                            <barButtonItem title="Home" id="Y95-5I-CjW">
+                            <barButtonItem title="Home" image="house" catalog="system" id="Y95-5I-CjW">
                                 <connections>
                                     <action selector="homeButton:" destination="9pv-A4-QxB" id="mmE-61-gDv"/>
                                 </connections>
@@ -179,7 +187,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1167" y="158"/>
+            <point key="canvasLocation" x="1165.5999999999999" y="157.42128935532236"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="sU3-Hb-TNz">
@@ -462,7 +470,7 @@
                             <outlet property="delegate" destination="T7b-wr-tHn" id="GM2-N2-VLa"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="All Spells" image="list.dash" catalog="system" selectedImage="second" id="zb9-d2-aez"/>
+                    <tabBarItem key="tabBarItem" title="All Spells" image="list.dash" catalog="system" id="zb9-d2-aez"/>
                     <connections>
                         <segue destination="9pv-A4-QxB" kind="show" identifier="allToDetail" id="efe-ww-GhW"/>
                     </connections>
@@ -478,6 +486,7 @@
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
     <resources>
         <image name="heart" catalog="system" width="128" height="109"/>
+        <image name="house" catalog="system" width="128" height="110"/>
         <image name="info.circle" catalog="system" width="128" height="121"/>
         <image name="list.dash" catalog="system" width="128" height="85"/>
         <image name="second" width="30" height="30"/>
