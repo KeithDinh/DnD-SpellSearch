@@ -31,8 +31,10 @@ struct Root: Codable {
 class SearchViewController: UIViewController, UITextFieldDelegate {
     
     var schoolList = [Spells]()
+    var schoolSpecificList = [Spells]()
     var spellList = [Spells]()
     var similarList = [Spells]()
+    
     @IBOutlet weak var searchField: UITextField!
     @IBOutlet var schoolField: UITextField!
     override func viewDidLoad() {
@@ -58,10 +60,16 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
         let actionSheetAlert = UIAlertController(title: "Pick a School", message: "", preferredStyle: .actionSheet)
         actionSheetAlert.addAction(UIAlertAction(title: "All Schools", style: .default, handler: {_ in
             self.schoolField.text = ""
+            self.schoolSpecificList = []
         }))
         for school in schoolList {
             actionSheetAlert.addAction(UIAlertAction(title: school.name, style: .default, handler: { _ in
                 self.schoolField.text = school.name
+                self.schoolSpecificList = []
+                let spellUrl = URL(string: "https://www.dnd5eapi.co/api//spells?school=\(school.name)")
+                if spellUrl != nil {
+                    self.downloadData(url: spellUrl!, type: "schoolspell")
+                }
                 
             }))
         }
@@ -76,20 +84,26 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
         
         // Dillon's codes
         
-        
         guard searchField.text!.count > 0 else {
             // if nothing in the textfield => show all
             // similarList = spellList
             // performSegue(withIdentifier: "table_seg", sender: self)
-            createAlert(title: "Empty Field", message: "")
+            createAlert(title: "Empty Field", message: "Search an item or use the Search All tab!")
             return
         }
         // if there is character in textfield => search
         let searchedText = searchField.text!.lowercased().replacingOccurrences(of: " ", with: "-")
-        
-        for item in spellList {
-            if item.index.contains("\(searchedText)"){
-                similarList.append(item)
+        if schoolSpecificList.count == 0 {
+            for item in spellList {
+                if item.index.contains("\(searchedText)"){
+                    similarList.append(item)
+                }
+            }
+        } else {
+            for item in schoolSpecificList {
+                if item.index.contains("\(searchedText)"){
+                    similarList.append(item)
+                }
             }
         }
         performSegue(withIdentifier: "table_seg", sender: self)
@@ -119,6 +133,12 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
             {
                 for items in tempList{
                     schoolList.append(items)
+                }
+            }
+            else if type == "schoolspell"
+            {
+                for items in tempList{
+                    schoolSpecificList.append(items)
                 }
             }
             

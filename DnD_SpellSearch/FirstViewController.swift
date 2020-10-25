@@ -9,73 +9,6 @@
 import UIKit
 import CoreData
 
-struct Type: Codable {
-    init() {
-        name = ""
-    }
-    let name: String
-}
-struct damageType: Codable {
-    init(){
-        damage_type = Type()
-        //damage_at_slot_level = [:]
-    }
-    let damage_type: Type
-   // let damage_at_slot_level:[String:String]
-}
-struct schoolType: Codable {
-    init() {
-        name = ""
-    }
-    let name: String
-}
-struct classType: Codable {
-    init(){
-        name = ""
-    }
-    let name: String
-}
-struct spellDetails : Codable {
-    init(){
-        name = ""
-        desc = []
-        higher_level = []
-        range = ""
-        components = []
-        material = ""
-        ritual = false
-        duration = ""
-        concentration = false
-        casting_time = ""
-        level = 0
-        attack_type = ""
-        damage = damageType()
-        school = schoolType()
-        classes = []
-        url = ""
-    }
-    let name: String
-    let desc: [String]
-    let range: String
-    let components: [String]
-    let ritual: Bool
-    let duration: String
-    let concentration: Bool
-    let casting_time: String
-    let level: Int
-    let school: schoolType
-    let classes: [classType]
-    let url: String
-    
-    //items found to be optional
-    let higher_level: [String]?
-    let material: String?
-    let attack_type: String?
-    let damage: damageType?
-}
-
-
-
 class FirstViewController: UIViewController {
 
     var Favorite:[NSManagedObject] = []
@@ -94,8 +27,12 @@ class FirstViewController: UIViewController {
     @IBOutlet weak var spellRange: UILabel!
     
     @IBOutlet weak var spellComponents: UILabel!
+    @IBOutlet weak var spellMat: UITextView!
+    
+    @IBOutlet weak var spellDuration: UILabel!
     @IBOutlet weak var spellClasses: UILabel!
     
+    @IBOutlet weak var labelExtra: UILabel!
     @IBOutlet weak var spellExtra: UITextView!
     
     override func viewDidLoad() {
@@ -183,14 +120,18 @@ class FirstViewController: UIViewController {
     func loadData(){
         DispatchQueue.main.async {
             self.navBar.title = self.thisSpell.name
-            self.spellDesc.text = self.thisSpell.desc.joined(separator: "\n \n")
-            self.spellSchool.text = "Level \(self.thisSpell.level) \(self.thisSpell.school.name)"
-            self.spellCastingTime.text  = "Casting Time: \(self.thisSpell.casting_time)"
-            self.spellRange.text = "Range: \(self.thisSpell.range)"
-            self.spellComponents.text = "Components: \(self.thisSpell.components.joined())"
-            self.getClasses()
-            self.getExtra()
             self.checkFav()
+            self.getSchool()
+            self.getRitual()
+            self.spellCastingTime.text  = "\(self.thisSpell.casting_time)"
+            self.spellRange.text = "\(self.thisSpell.range)"
+            self.spellComponents.text = "\(self.thisSpell.components.joined())"
+            self.getMats()
+            self.spellDuration.text = "\(self.thisSpell.duration)"
+            self.getClasses()
+            self.spellDesc.text = self.thisSpell.desc.joined(separator: "\n \n")
+            self.getExtra()
+
         }
     }
     func checkFav(){
@@ -221,18 +162,49 @@ class FirstViewController: UIViewController {
             return
         }
     }
+    func getSchool() {
+        switch self.thisSpell.level {
+        case 0:
+            self.spellSchool.text = "\(self.thisSpell.school.name) Cantrip"
+        case 1:
+            self.spellSchool.text = "1st Level \(self.thisSpell.school.name)"
+        case 2:
+            self.spellSchool.text = "2nd Level \(self.thisSpell.school.name)"
+        case 3:
+            self.spellSchool.text = "3rd Level \(self.thisSpell.school.name)"
+        case 4...9:
+            self.spellSchool.text = "\(self.thisSpell.level)th Level \(self.thisSpell.school.name)"
+        default:
+            self.spellSchool.text = ""
+        }
+    }
+    func getRitual() {
+        if thisSpell.ritual == true {
+            self.spellSchool.text!.append("(ritual)")
+        }
+    }
     func getComponents() {
         var comp = ""
         for item in thisSpell.components {
-
             comp += item
         }
-        print("here")
-        spellComponents.text = "Components: \(comp)"
+        spellComponents.text = "\(comp)"
         
     }
+    func getMats() {
+        if thisSpell.material != nil {
+            spellMat.text = "(\(thisSpell.material!))"
+        }else {
+            spellMat.text = ""
+        }
+    }
     func getExtra() {
-        //need to work on getting info from api (damage at level/healing at level)
+        if thisSpell.higher_level != nil {
+            spellExtra.text = "\(thisSpell.higher_level!.joined(separator: "\n"))"
+        }else{
+            self.labelExtra.text = ""
+            self.spellExtra.text = ""
+        }
     }
     func getClasses() {
         var classList = ""
@@ -247,7 +219,7 @@ class FirstViewController: UIViewController {
             }
             
         }
-        spellClasses.text = "Classes: \(classList)"
+        spellClasses.text = "\(classList)"
     }
     
     func decodeData(downloaded_data: Data){
@@ -273,8 +245,55 @@ class FirstViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
-    
-
-
 }
-
+struct Type: Codable {
+    init() {
+        name = ""
+    }
+    let name: String
+}
+struct schoolType: Codable {
+    init() {
+        name = ""
+    }
+    let name: String
+}
+struct classType: Codable {
+    init(){
+        name = ""
+    }
+    let name: String
+}
+struct spellDetails : Codable {
+    init(){
+        name = ""
+        desc = []
+        higher_level = []
+        range = ""
+        components = []
+        material = ""
+        ritual = false
+        duration = ""
+        concentration = false
+        casting_time = ""
+        level = 0
+        school = schoolType()
+        classes = []
+        url = ""
+    }
+    let name: String
+    let desc: [String]
+    let range: String
+    let components: [String]
+    let ritual: Bool
+    let duration: String
+    let concentration: Bool
+    let casting_time: String
+    let level: Int
+    let school: schoolType
+    let classes: [classType]
+    let url: String
+    //items found to be optional
+    let higher_level: [String]?
+    let material: String?
+}

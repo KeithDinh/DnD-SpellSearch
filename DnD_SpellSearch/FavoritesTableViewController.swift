@@ -92,7 +92,6 @@ class FavoritesTableViewController: UITableViewController {
         //3
         do {
             Favorite = try managedContent.fetch(fetchRequest)
-            print("fetch complete")
         } catch let error as NSError{
             print("Could not fetch. \(error), \(error.userInfo)")
         }
