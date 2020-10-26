@@ -206,9 +206,13 @@ class FirstViewController: UIViewController {
     }
     
     func getSubClasses() {
+        if thisSpell.subclasses?.count == 0 {
+            spellSubClasses.text = "None"
+            return
+        }
         var subClassList = ""
         var first = true
-        for items in thisSpell.subclasses {
+        for items in thisSpell.subclasses! {
             if first == true {
                 first = false
                 subClassList += items.name
@@ -220,12 +224,19 @@ class FirstViewController: UIViewController {
         }
         spellSubClasses.text = "\(subClassList)"
     }
-    
+    func getSpellDamageType()
+    {
+        
+        if self.thisSpell.damage?.damage_type.name != nil {
+            spellDamageType.text = self.thisSpell.damage?.damage_type.name
+            return
+        }
+        self.spellDamageType.text = "None"
+    }
     func decodeData(downloaded_data: Data){
          do {
             let downloaded_info = try JSONDecoder().decode(spellDetails.self, from:downloaded_data)
             self.thisSpell = downloaded_info
-            print(self.thisSpell.damage)
             loadData()
             } catch {print("Decoding Error")}
     }
@@ -245,7 +256,7 @@ class FirstViewController: UIViewController {
             self.checkFav()
             self.getSchool()
             self.getRitual()
-            self.spellDamageType.text = "\(self.thisSpell.damage.damage_type.name)"
+            self.getSpellDamageType()
             self.spellCastingTime.text  = "\(self.thisSpell.casting_time)"
             self.spellRange.text = "\(self.thisSpell.range)"
             self.spellComponents.text = "\(self.thisSpell.components.joined())"
@@ -324,9 +335,9 @@ struct spellDetails : Codable {
     let level: Int
     let school: schoolType
     let classes: [classType]
-    let subclasses: [classType]
+    let subclasses: [classType]?
     let url: String
-    let damage: damageType
+    let damage: damageType?
     //items found to be optional
     let higher_level: [String]?
     let material: String?
