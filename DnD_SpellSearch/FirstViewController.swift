@@ -20,9 +20,8 @@ class FirstViewController: UIViewController {
     @IBOutlet weak var navBar: UINavigationItem!
     
     @IBOutlet weak var spellDesc: UITextView!
-    
     @IBOutlet weak var spellSchool: UILabel!
-    
+
     @IBOutlet weak var spellCastingTime: UILabel!
     @IBOutlet weak var spellRange: UILabel!
     
@@ -31,7 +30,9 @@ class FirstViewController: UIViewController {
     
     @IBOutlet weak var spellDuration: UILabel!
     @IBOutlet weak var spellClasses: UILabel!
+    @IBOutlet weak var spellSubClasses: UILabel!
     
+    @IBOutlet weak var spellDamageType: UILabel!
     @IBOutlet weak var labelExtra: UILabel!
     @IBOutlet weak var spellExtra: UITextView!
     
@@ -45,13 +46,9 @@ class FirstViewController: UIViewController {
 
     @IBAction func homeButton(_ sender: Any) {
         self.navigationController?.popToRootViewController(animated: true)
-        
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let home = storyboard.instantiateViewController(withIdentifier: "Home") as! SearchViewController
-//        self.navigationController?.pushViewController(home, animated: true)
-//        self.navigationController?.isNavigationBarHidden = false
-
     }
+    
+    // add to core data, 
     func addToFavorite(){
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return
@@ -73,6 +70,7 @@ class FirstViewController: UIViewController {
             print("Could not save. \(error), \(error.userInfo)")
         }
     }
+    
     func removeFromFavorite(){
         //1
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
@@ -117,23 +115,7 @@ class FirstViewController: UIViewController {
         }
     }
     
-    func loadData(){
-        DispatchQueue.main.async {
-            self.navBar.title = self.thisSpell.name
-            self.checkFav()
-            self.getSchool()
-            self.getRitual()
-            self.spellCastingTime.text  = "\(self.thisSpell.casting_time)"
-            self.spellRange.text = "\(self.thisSpell.range)"
-            self.spellComponents.text = "\(self.thisSpell.components.joined())"
-            self.getMats()
-            self.spellDuration.text = "\(self.thisSpell.duration)"
-            self.getClasses()
-            self.spellDesc.text = self.thisSpell.desc.joined(separator: "\n \n")
-            self.getExtra()
 
-        }
-    }
     func checkFav(){
         //1
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
@@ -178,6 +160,7 @@ class FirstViewController: UIViewController {
             self.spellSchool.text = ""
         }
     }
+    
     func getRitual() {
         if thisSpell.ritual == true {
             self.spellSchool.text!.append("(ritual)")
@@ -215,22 +198,36 @@ class FirstViewController: UIViewController {
                 classList += items.name
             }
             else {
-            classList += ",\(items.name)"
+            classList += ", \(items.name)"
             }
             
         }
         spellClasses.text = "\(classList)"
     }
     
+    func getSubClasses() {
+        var subClassList = ""
+        var first = true
+        for items in thisSpell.subclasses {
+            if first == true {
+                first = false
+                subClassList += items.name
+            }
+            else {
+            subClassList += ", \(items.name)"
+            }
+            
+        }
+        spellSubClasses.text = "\(subClassList)"
+    }
+    
     func decodeData(downloaded_data: Data){
          do {
-           let downloaded_info = try JSONDecoder().decode(spellDetails.self, from:downloaded_data)
+            let downloaded_info = try JSONDecoder().decode(spellDetails.self, from:downloaded_data)
             self.thisSpell = downloaded_info
+            print(self.thisSpell.damage)
             loadData()
-               } catch {
-                   print("Decoding Error")
-               }
-        
+            } catch {print("Decoding Error")}
     }
     func downloadData(url: URL) {
         let _ = URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
@@ -241,6 +238,25 @@ class FirstViewController: UIViewController {
                 print(error)
             }
             }).resume()
+    }
+    func loadData(){
+        DispatchQueue.main.async {
+            self.navBar.title = self.thisSpell.name
+            self.checkFav()
+            self.getSchool()
+            self.getRitual()
+            self.spellDamageType.text = "\(self.thisSpell.damage.damage_type.name)"
+            self.spellCastingTime.text  = "\(self.thisSpell.casting_time)"
+            self.spellRange.text = "\(self.thisSpell.range)"
+            self.spellComponents.text = "\(self.thisSpell.components.joined())"
+            self.getMats()
+            self.spellDuration.text = "\(self.thisSpell.duration)"
+            self.getClasses()
+            self.getSubClasses()
+            self.spellDesc.text = self.thisSpell.desc.joined(separator: "\n \n")
+            self.getExtra()
+
+        }
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -264,6 +280,20 @@ struct classType: Codable {
     }
     let name: String
 }
+struct damageType: Codable {
+    init() {
+        damage_type = damage_typeType()
+        damage_at_slot_level = [:]
+    }
+    let damage_type: damage_typeType
+    let damage_at_slot_level: [Int:String]
+}
+struct damage_typeType: Codable {
+    init() {
+        name = ""
+    }
+    let name: String
+}
 struct spellDetails : Codable {
     init(){
         name = ""
@@ -279,7 +309,9 @@ struct spellDetails : Codable {
         level = 0
         school = schoolType()
         classes = []
+        subclasses = []
         url = ""
+        damage = damageType()
     }
     let name: String
     let desc: [String]
@@ -292,7 +324,9 @@ struct spellDetails : Codable {
     let level: Int
     let school: schoolType
     let classes: [classType]
+    let subclasses: [classType]
     let url: String
+    let damage: damageType
     //items found to be optional
     let higher_level: [String]?
     let material: String?

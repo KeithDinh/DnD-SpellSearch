@@ -5,6 +5,9 @@
 //  Created by student on 10/20/20.
 //  Copyright © 2020 Dillon Jones & Kiet Dinh. All rights reserved.
 //
+// Ref: https://www.hackingwithswift.com/example-code/uikit/how-to-swipe-to-delete-uitableviewcells
+// Ref: https://medium.com/@gayatri.hedau/core-data-ios-swift-ed66b2e700fc
+// Ref: https://www.raywenderlich.com/7569-getting-started-with-core-data-tutorial
 
 import UIKit
 import CoreData
@@ -101,7 +104,7 @@ class FavoritesTableViewController: UITableViewController {
     }
 
     // Override to support editing the table view.
-    // Ref: https://www.hackingwithswift.com/example-code/uikit/how-to-swipe-to-delete-uitableviewcells
+
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
@@ -117,20 +120,22 @@ class FavoritesTableViewController: UITableViewController {
             //3
             let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Favorite")
             fetchRequest.predicate = NSPredicate(format: "name == %@", selectedFav)
-            let result = try? managedContent.fetch(fetchRequest)
-            let resData = result!
-
-            for object in resData {
-                managedContent.delete(object)
-            }
+            
             do {
-                try managedContent.save()
-                // Update Favorite list after removing
-                if let index = Favorite.firstIndex(of: fav) {
-                    Favorite.remove(at: index)
+                let test = try managedContent.fetch(fetchRequest)
+                let objectToDelete = test[0] // as! NSManagedObject
+                managedContent.delete(objectToDelete)
+                do {
+                    try managedContent.save()
+                    // Update Favorite list after removing
+                    if let index = Favorite.firstIndex(of: fav) {
+                        Favorite.remove(at: index)
+                    }
+                } catch let error as NSError {
+                    print("Error in save \(error), \(error.userInfo)")
                 }
-            }   catch let error as NSError {
-                print("error in save \(error), \(error.userInfo)")
+            } catch {
+                print("Error in fetch")
             }
             // * Swipe removing
             tableView.deleteRows(at: [indexPath], with: .fade)
