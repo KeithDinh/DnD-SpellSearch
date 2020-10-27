@@ -17,6 +17,7 @@
 		3F56544A25366D9F00348E3D /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F56544925366D9F00348E3D /* TableViewController.swift */; };
 		3F56544C25366DBD00348E3D /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F56544B25366DBD00348E3D /* SearchViewController.swift */; };
 		3F740C7D253F8E3100044FFE /* FavoritesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F740C7C253F8E3100044FFE /* FavoritesTableViewController.swift */; };
+		3FDF5D132547DCB4004BA8B9 /* SpellSearchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FDF5D122547DCB4004BA8B9 /* SpellSearchData.swift */; };
 		847F41452544036B00D8C50A /* AllTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847F41442544036B00D8C50A /* AllTableViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +34,7 @@
 		3F56544925366D9F00348E3D /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		3F56544B25366DBD00348E3D /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		3F740C7C253F8E3100044FFE /* FavoritesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewController.swift; sourceTree = "<group>"; };
+		3FDF5D122547DCB4004BA8B9 /* SpellSearchData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellSearchData.swift; sourceTree = "<group>"; };
 		847F41442544036B00D8C50A /* AllTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -78,6 +80,7 @@
 				3F56544025366BD300348E3D /* LaunchScreen.storyboard */,
 				3F56544325366BD300348E3D /* Info.plist */,
 				3F56543B25366BCF00348E3D /* DnD_SpellSearch.xcdatamodeld */,
+				3FDF5D122547DCB4004BA8B9 /* SpellSearchData.swift */,
 			);
 			path = DnD_SpellSearch;
 			sourceTree = "<group>";
@@ -160,6 +163,7 @@
 				3F56543525366BCF00348E3D /* FirstViewController.swift in Sources */,
 				3F56543125366BCF00348E3D /* AppDelegate.swift in Sources */,
 				3F56543325366BCF00348E3D /* SceneDelegate.swift in Sources */,
+				3FDF5D132547DCB4004BA8B9 /* SpellSearchData.swift in Sources */,
 				847F41452544036B00D8C50A /* AllTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -8,26 +8,6 @@
 // https://www.dnd5eapi.co/
 import UIKit
 
-struct Spells: Codable{
-    init(){
-        index = ""
-        name = ""
-        url = ""
-    }
-    let index: String
-    let name: String
-    let url: String
-}
-struct Root: Codable {
-    init() {
-        count = 0
-        results = []
-    }
-    let count: Int
-    let results: [Spells]
-}
-
-
 class SearchViewController: UIViewController, UITextFieldDelegate {
     
     var schoolList = [Spells]()
@@ -193,32 +173,6 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
         // show the action window when users perform action
         self.present(alert, animated: true, completion: nil)
     }
-
-    
-//    @IBAction func searchButton(_ sender: Any) {
-//        guard searchField.text!.count > 0 else {
-//                      let alert = UIAlertController(title: "Missing Spell", message: "Please enter a spell or press Show All", preferredStyle: .alert)
-//                      alert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: { _ in self.dismiss(animated: true, completion: nil)
-//                      }))
-//                      self.present(alert, animated: true)
-//                      return
-//              }
-//        let searchedText = searchField.text!.lowercased().replacingOccurrences(of: " ", with: "-")
-//
-//        for item in spellList {
-//            if item.index.contains("\(searchedText)"){
-//                similarList.append(item)
-//            }
-//        }
-//        performSegue(withIdentifier: "table_seg", sender: self)
-//    }
-//
-//    @IBAction func showAllButton(_ sender: Any) {
-//        similarList = spellList
-//        performSegue(withIdentifier: "table_seg", sender: self)
-//
-//    }
-    
     /*
     // MARK: - Navigation
 
