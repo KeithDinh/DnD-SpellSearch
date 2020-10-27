@@ -32,7 +32,7 @@ class FirstViewController: UIViewController {
     @IBOutlet weak var spellClasses: UILabel!
     @IBOutlet weak var spellSubClasses: UILabel!
     
-    @IBOutlet weak var spellDamageType: UILabel!
+    // @IBOutlet weak var spellDamageType: UILabel!
     @IBOutlet weak var labelExtra: UILabel!
     @IBOutlet weak var spellExtra: UITextView!
     
@@ -46,6 +46,7 @@ class FirstViewController: UIViewController {
 
     @IBAction func homeButton(_ sender: Any) {
         self.navigationController?.popToRootViewController(animated: true)
+        
     }
     
     // add to core data, 
@@ -207,7 +208,8 @@ class FirstViewController: UIViewController {
     
     func getSubClasses() {
         if thisSpell.subclasses?.count == 0 {
-            spellSubClasses.text = "None"
+            // prevent the sub class to be None
+            spellSubClasses.text = thisSpell.classes[0].name
             return
         }
         var subClassList = ""
@@ -224,15 +226,15 @@ class FirstViewController: UIViewController {
         }
         spellSubClasses.text = "\(subClassList)"
     }
-    func getSpellDamageType()
-    {
-        
-        if self.thisSpell.damage?.damage_type.name != nil {
-            spellDamageType.text = self.thisSpell.damage?.damage_type.name
-            return
-        }
-        self.spellDamageType.text = "None"
-    }
+//    func getSpellDamageType()
+//    {
+//
+//        if self.thisSpell.damage?.damage_type.name != nil {
+//            spellDamageType.text = self.thisSpell.damage?.damage_type.name
+//            return
+//        }
+//        self.spellDamageType.text = "None"
+//    }
     func decodeData(downloaded_data: Data){
          do {
             let downloaded_info = try JSONDecoder().decode(spellDetails.self, from:downloaded_data)
@@ -256,7 +258,7 @@ class FirstViewController: UIViewController {
             self.checkFav()
             self.getSchool()
             self.getRitual()
-            self.getSpellDamageType()
+            // self.getSpellDamageType()
             self.spellCastingTime.text  = "\(self.thisSpell.casting_time)"
             self.spellRange.text = "\(self.thisSpell.range)"
             self.spellComponents.text = "\(self.thisSpell.components.joined())"
@@ -322,7 +324,7 @@ struct spellDetails : Codable {
         classes = []
         subclasses = []
         url = ""
-        damage = damageType()
+        // damage = damageType()
     }
     let name: String
     let desc: [String]
@@ -337,7 +339,7 @@ struct spellDetails : Codable {
     let classes: [classType]
     let subclasses: [classType]?
     let url: String
-    let damage: damageType?
+    // let damage: damageType?
     //items found to be optional
     let higher_level: [String]?
     let material: String?
