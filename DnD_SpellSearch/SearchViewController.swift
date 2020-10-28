@@ -23,10 +23,6 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         setFonts()
-        for family in UIFont.familyNames.sorted() {
-            let names = UIFont.fontNames(forFamilyName: family)
-            print("Family: \(family) Font names: \(names)")
-        }
         let spellUrl = URL(string: "https://www.dnd5eapi.co/api/spells")
         if spellUrl != nil {
             downloadData(url: spellUrl!, type: "spell")
