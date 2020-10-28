@@ -41,7 +41,7 @@ class TableViewController: UITableViewController {
         let cell_name = cell.viewWithTag(1) as! UILabel
         
         // set font type to Times New Roman, size = 30
-        cell_name.font = UIFont(name: "Times New Roman", size: 25)
+        cell_name.font = UIFont(name: "Mr.EavesSmallCaps", size: 30)
         
         cell_name.text = passedList[indexPath.row].name
         

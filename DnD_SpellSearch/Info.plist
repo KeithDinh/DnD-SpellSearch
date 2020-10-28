@@ -70,5 +70,16 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Nodesto Caps Condensed.otf</string>
+		<string>Nodesto Caps Condensed Bold Italic.otf</string>
+		<string>Nodesto Caps Condensed Bold.otf</string>
+		<string>Nodesto Caps Condensed Italic.otf</string>
+		<string>Nodesto Caps Condensed.otf</string>
+		<string>Mr Eaves Small Caps.otf</string>
+		<string>Bookinsanity.otf</string>
+		<string>Bookinsanity Bold.otf</string>
+	</array>
 </dict>
 </plist>

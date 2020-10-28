@@ -18,26 +18,30 @@ class FirstViewController: UIViewController {
     
     @IBOutlet weak var favButton: UIBarButtonItem!
     @IBOutlet weak var navBar: UINavigationItem!
-    
-    @IBOutlet weak var spellDesc: UITextView!
-    @IBOutlet weak var spellSchool: UILabel!
 
+    @IBOutlet weak var spellSchool: UILabel!
+    @IBOutlet weak var labelCastTime: UILabel!
     @IBOutlet weak var spellCastingTime: UILabel!
+    @IBOutlet weak var labelRange: UILabel!
     @IBOutlet weak var spellRange: UILabel!
-    
+    @IBOutlet weak var labelComponents: UILabel!
     @IBOutlet weak var spellComponents: UILabel!
     @IBOutlet weak var spellMat: UITextView!
-    
+    @IBOutlet weak var labelDuration: UILabel!
     @IBOutlet weak var spellDuration: UILabel!
+    @IBOutlet weak var labelClasses: UILabel!
     @IBOutlet weak var spellClasses: UILabel!
+    @IBOutlet weak var labelSubClasses: UILabel!
     @IBOutlet weak var spellSubClasses: UILabel!
-    
+    @IBOutlet weak var labelDesc: UILabel!
+    @IBOutlet weak var spellDesc: UITextView!
     // @IBOutlet weak var spellDamageType: UILabel!
     @IBOutlet weak var labelExtra: UILabel!
     @IBOutlet weak var spellExtra: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setFonts()
         let url = URL(string: "https://www.dnd5eapi.co\(passedInformation)" )
         if url != nil {
             downloadData(url:url!)
@@ -274,4 +278,32 @@ class FirstViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
+    func setFonts(){
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Bookinsanity-Italic", size: 20)!]
+        spellSchool.font = UIFont(name: "Bookinsanity-Italic", size: 17)
+        labelCastTime.font = UIFont(name: "Bookinsanity-BoldItalic", size: 17)
+        spellCastingTime.font = UIFont(name: "Bookinsanity-Italic", size: 17)
+        labelRange.font = UIFont(name: "Bookinsanity-BoldItalic", size: 17)
+        spellRange.font = UIFont(name: "Bookinsanity-Italic", size: 17)
+        labelComponents.font = UIFont(name: "Bookinsanity-BoldItalic", size: 17)
+        spellComponents.font = UIFont(name: "Bookinsanity-Italic", size: 17)
+        spellMat.font = UIFont(name: "Bookinsanity-Italic", size: 10)
+        labelDuration.font = UIFont(name: "Bookinsanity-BoldItalic", size: 17)
+        spellDuration.font = UIFont(name: "Bookinsanity-Italic", size: 17)
+        labelClasses.font = UIFont(name: "Bookinsanity-BoldItalic", size: 17)
+        spellClasses.font = UIFont(name: "Bookinsanity-Italic", size: 17)
+        labelSubClasses.font = UIFont(name: "Bookinsanity-BoldItalic", size: 17)
+        spellSubClasses.font = UIFont(name: "Bookinsanity-Italic", size: 17)
+        labelDesc.font = UIFont(name: "Bookinsanity-BoldItalic", size: 17)
+        spellDesc.font = UIFont(name: "Bookinsanity-Italic", size: 17)
+        spellDesc.textContainerInset = UIEdgeInsets.zero
+        spellDesc.textContainer.lineFragmentPadding = 0
+        labelExtra.font = UIFont(name: "Bookinsanity-BoldItalic", size: 17)
+        spellExtra.font = UIFont(name: "Bookinsanity-Italic", size: 17)
+        spellExtra.textContainerInset = UIEdgeInsets.zero
+        spellExtra.textContainer.lineFragmentPadding = 0
+        
+        //Mr.EavesSmallCaps
+    }
 }
+//Family: Bookinsanity Font names: ["Bookinsanity-Italic", "Bookinsanity-BoldItalic"]

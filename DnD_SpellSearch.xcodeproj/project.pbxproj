@@ -18,6 +18,13 @@
 		3F56544C25366DBD00348E3D /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F56544B25366DBD00348E3D /* SearchViewController.swift */; };
 		3F740C7D253F8E3100044FFE /* FavoritesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F740C7C253F8E3100044FFE /* FavoritesTableViewController.swift */; };
 		3FDF5D132547DCB4004BA8B9 /* SpellSearchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FDF5D122547DCB4004BA8B9 /* SpellSearchData.swift */; };
+		3FDF5D412549086F004BA8B9 /* Nodesto Caps Condensed Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3FDF5D302549086E004BA8B9 /* Nodesto Caps Condensed Italic.otf */; };
+		3FDF5D4B25490870004BA8B9 /* Mr Eaves Small Caps.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3FDF5D3A2549086F004BA8B9 /* Mr Eaves Small Caps.otf */; };
+		3FDF5D4C25490870004BA8B9 /* Nodesto Caps Condensed Bold Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3FDF5D3B2549086F004BA8B9 /* Nodesto Caps Condensed Bold Italic.otf */; };
+		3FDF5D4D25490870004BA8B9 /* Nodesto Caps Condensed.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3FDF5D3C2549086F004BA8B9 /* Nodesto Caps Condensed.otf */; };
+		3FDF5D4E25490870004BA8B9 /* Nodesto Caps Condensed Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3FDF5D3D2549086F004BA8B9 /* Nodesto Caps Condensed Bold.otf */; };
+		3FDF5D5825491467004BA8B9 /* Bookinsanity.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3FDF5D5425491467004BA8B9 /* Bookinsanity.otf */; };
+		3FDF5D5A25491467004BA8B9 /* Bookinsanity Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3FDF5D5625491467004BA8B9 /* Bookinsanity Bold.otf */; };
 		847F41452544036B00D8C50A /* AllTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847F41442544036B00D8C50A /* AllTableViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +42,13 @@
 		3F56544B25366DBD00348E3D /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		3F740C7C253F8E3100044FFE /* FavoritesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewController.swift; sourceTree = "<group>"; };
 		3FDF5D122547DCB4004BA8B9 /* SpellSearchData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellSearchData.swift; sourceTree = "<group>"; };
+		3FDF5D302549086E004BA8B9 /* Nodesto Caps Condensed Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nodesto Caps Condensed Italic.otf"; sourceTree = "<group>"; };
+		3FDF5D3A2549086F004BA8B9 /* Mr Eaves Small Caps.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Mr Eaves Small Caps.otf"; sourceTree = "<group>"; };
+		3FDF5D3B2549086F004BA8B9 /* Nodesto Caps Condensed Bold Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nodesto Caps Condensed Bold Italic.otf"; sourceTree = "<group>"; };
+		3FDF5D3C2549086F004BA8B9 /* Nodesto Caps Condensed.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nodesto Caps Condensed.otf"; sourceTree = "<group>"; };
+		3FDF5D3D2549086F004BA8B9 /* Nodesto Caps Condensed Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nodesto Caps Condensed Bold.otf"; sourceTree = "<group>"; };
+		3FDF5D5425491467004BA8B9 /* Bookinsanity.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Bookinsanity.otf; path = "../../../../Downloads/5th Edition Font Clones CC/Bookinsanity.otf"; sourceTree = "<group>"; };
+		3FDF5D5625491467004BA8B9 /* Bookinsanity Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Bookinsanity Bold.otf"; path = "../../../../Downloads/5th Edition Font Clones CC/Bookinsanity Bold.otf"; sourceTree = "<group>"; };
 		847F41442544036B00D8C50A /* AllTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -68,6 +82,7 @@
 		3F56542F25366BCF00348E3D /* DnD_SpellSearch */ = {
 			isa = PBXGroup;
 			children = (
+				3FDF5D2425490822004BA8B9 /* Fonts */,
 				3F56543025366BCF00348E3D /* AppDelegate.swift */,
 				3F56543225366BCF00348E3D /* SceneDelegate.swift */,
 				3F56544B25366DBD00348E3D /* SearchViewController.swift */,
@@ -83,6 +98,20 @@
 				3FDF5D122547DCB4004BA8B9 /* SpellSearchData.swift */,
 			);
 			path = DnD_SpellSearch;
+			sourceTree = "<group>";
+		};
+		3FDF5D2425490822004BA8B9 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				3FDF5D5625491467004BA8B9 /* Bookinsanity Bold.otf */,
+				3FDF5D5425491467004BA8B9 /* Bookinsanity.otf */,
+				3FDF5D3A2549086F004BA8B9 /* Mr Eaves Small Caps.otf */,
+				3FDF5D3B2549086F004BA8B9 /* Nodesto Caps Condensed Bold Italic.otf */,
+				3FDF5D3D2549086F004BA8B9 /* Nodesto Caps Condensed Bold.otf */,
+				3FDF5D302549086E004BA8B9 /* Nodesto Caps Condensed Italic.otf */,
+				3FDF5D3C2549086F004BA8B9 /* Nodesto Caps Condensed.otf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -143,9 +172,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FDF5D412549086F004BA8B9 /* Nodesto Caps Condensed Italic.otf in Resources */,
 				3F56544225366BD300348E3D /* LaunchScreen.storyboard in Resources */,
 				3F56543F25366BD300348E3D /* Assets.xcassets in Resources */,
+				3FDF5D5A25491467004BA8B9 /* Bookinsanity Bold.otf in Resources */,
+				3FDF5D4E25490870004BA8B9 /* Nodesto Caps Condensed Bold.otf in Resources */,
+				3FDF5D4D25490870004BA8B9 /* Nodesto Caps Condensed.otf in Resources */,
+				3FDF5D4C25490870004BA8B9 /* Nodesto Caps Condensed Bold Italic.otf in Resources */,
 				3F56543A25366BCF00348E3D /* Main.storyboard in Resources */,
+				3FDF5D5825491467004BA8B9 /* Bookinsanity.otf in Resources */,
+				3FDF5D4B25490870004BA8B9 /* Mr Eaves Small Caps.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

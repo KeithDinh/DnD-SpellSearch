@@ -10,6 +10,9 @@ import UIKit
 
 class SearchViewController: UIViewController, UITextFieldDelegate {
     
+    @IBOutlet weak var titleLabel1: UILabel!
+    @IBOutlet weak var titleLabel2: UILabel!
+    @IBOutlet weak var subTitleLabel: UILabel!
     var schoolList = [Spells]()
     var schoolSpecificList = [Spells]()
     var spellList = [Spells]()
@@ -19,7 +22,11 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var schoolField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setFonts()
+        for family in UIFont.familyNames.sorted() {
+            let names = UIFont.fontNames(forFamilyName: family)
+            print("Family: \(family) Font names: \(names)")
+        }
         let spellUrl = URL(string: "https://www.dnd5eapi.co/api/spells")
         if spellUrl != nil {
             downloadData(url: spellUrl!, type: "spell")
@@ -172,6 +179,13 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
         
         // show the action window when users perform action
         self.present(alert, animated: true, completion: nil)
+    }
+    func setFonts() {
+        titleLabel1.font = UIFont(name: "NodestoCapsCondensed", size: 30)
+        titleLabel2.font = UIFont(name: "NodestoCapsCondensed", size: 35)
+        subTitleLabel.font = UIFont(name: "NodestoCapsCondensed", size: 15)
+        schoolField.font = UIFont(name: "Bookinsanity", size: 17)
+        searchField.font = UIFont(name: "Bookinsanity", size: 17)
     }
     /*
     // MARK: - Navigation

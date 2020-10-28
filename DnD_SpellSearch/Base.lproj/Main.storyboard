@@ -6,6 +6,11 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Nodesto Caps Condensed.otf">
+            <string>NodestoCapsCondensed</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Descriptions-->
         <scene sceneID="hNz-n2-bh7">
@@ -91,12 +96,12 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Range" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ES-hA-9bk">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Range" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ES-hA-9bk">
                                                 <rect key="frame" x="70.5" y="60" width="49" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="hSm-iD-4aG"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -127,12 +132,12 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spell Description:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qSf-v2-CzG">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spell Description:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qSf-v2-CzG">
                                                 <rect key="frame" x="8" y="200" width="359" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="PEM-ed-rAv"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -279,7 +284,14 @@
                     <size key="freeformSize" width="375" height="1000"/>
                     <connections>
                         <outlet property="favButton" destination="8VC-Yq-211" id="IRB-0R-6ZH"/>
+                        <outlet property="labelCastTime" destination="PCe-lV-q9j" id="LZP-Lk-81u"/>
+                        <outlet property="labelClasses" destination="Mzj-dB-Fbf" id="JJP-Ue-bFG"/>
+                        <outlet property="labelComponents" destination="moP-I8-wFd" id="NvD-FX-E6E"/>
+                        <outlet property="labelDesc" destination="qSf-v2-CzG" id="ub9-3s-k4l"/>
+                        <outlet property="labelDuration" destination="svY-vF-rNd" id="18a-cS-nXv"/>
                         <outlet property="labelExtra" destination="FPK-9m-kPT" id="sir-jW-7cj"/>
+                        <outlet property="labelRange" destination="Vhx-ho-low" id="1Ho-wT-3dt"/>
+                        <outlet property="labelSubClasses" destination="DeT-7F-BvH" id="RQV-Ay-q5q"/>
                         <outlet property="navBar" destination="9RD-eH-gLL" id="qOm-Gv-d2z"/>
                         <outlet property="spellCastingTime" destination="GuV-eE-VXt" id="H9h-Ju-biP"/>
                         <outlet property="spellClasses" destination="Pfc-h0-9Ay" id="RnW-Ab-2xj"/>
@@ -443,18 +455,24 @@
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                             </textField>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="rD7-N0-agK" userLabel="Header Titles">
-                                <rect key="frame" x="86" y="76" width="203.5" height="44.5"/>
+                                <rect key="frame" x="90.5" y="64" width="194.5" height="71"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dungeons &amp; Dragons" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GBW-2B-4sc">
-                                        <rect key="frame" x="0.0" y="0.0" width="203.5" height="26.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dungeons &amp; Dragons" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GBW-2B-4sc">
+                                        <rect key="frame" x="0.0" y="0.0" width="194.5" height="25.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                         <color key="textColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5th Edition" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2wt-vx-P3C">
-                                        <rect key="frame" x="64.5" y="26.5" width="74" height="18"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5th Edition" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2wt-vx-P3C">
+                                        <rect key="frame" x="66" y="25.5" width="62.5" height="15.5"/>
+                                        <fontDescription key="fontDescription" name="NodestoCapsCondensed" family="Nodesto Caps Condensed" pointSize="13"/>
                                         <color key="textColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spell Book" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rLN-4x-kvm">
+                                        <rect key="frame" x="40" y="41" width="114.5" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -465,7 +483,7 @@
                                     <constraint firstAttribute="width" constant="250" id="OwQ-7P-ivB"/>
                                     <constraint firstAttribute="height" constant="35" id="wvk-IX-M3t"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                         </subviews>
@@ -475,7 +493,7 @@
                             <constraint firstAttribute="bottom" secondItem="wbR-hy-XWX" secondAttribute="bottom" id="92M-qj-3e2"/>
                             <constraint firstItem="dbZ-A5-aq6" firstAttribute="top" secondItem="OWg-xE-dPO" secondAttribute="top" id="SlW-R4-Dm9"/>
                             <constraint firstItem="dbZ-A5-aq6" firstAttribute="trailing" secondItem="OWg-xE-dPO" secondAttribute="trailing" id="THx-CQ-UsB"/>
-                            <constraint firstItem="rD7-N0-agK" firstAttribute="top" secondItem="OWg-xE-dPO" secondAttribute="top" constant="32" id="VzZ-Av-PNl"/>
+                            <constraint firstItem="rD7-N0-agK" firstAttribute="top" secondItem="OWg-xE-dPO" secondAttribute="top" constant="20" id="VzZ-Av-PNl"/>
                             <constraint firstItem="8Fo-5J-SPo" firstAttribute="top" secondItem="7o7-rD-IUi" secondAttribute="bottom" constant="8" id="Vzd-MX-JuK"/>
                             <constraint firstItem="wbR-hy-XWX" firstAttribute="top" secondItem="OWg-xE-dPO" secondAttribute="top" id="b8r-Hv-efv"/>
                             <constraint firstItem="7o7-rD-IUi" firstAttribute="centerY" secondItem="uHO-i8-L4A" secondAttribute="centerY" id="bag-gu-yDQ"/>
@@ -490,7 +508,10 @@
                     <tabBarItem key="tabBarItem" systemItem="search" id="FTt-6y-IaX"/>
                     <connections>
                         <outlet property="schoolField" destination="7o7-rD-IUi" id="gfL-iS-i5Y"/>
-                        <outlet property="searchField" destination="8Fo-5J-SPo" id="nH4-nM-egt"/>
+                        <outlet property="searchField" destination="8Fo-5J-SPo" id="brq-KA-vig"/>
+                        <outlet property="subTitleLabel" destination="2wt-vx-P3C" id="hQ3-oQ-AFi"/>
+                        <outlet property="titleLabel1" destination="GBW-2B-4sc" id="e5G-fi-ovi"/>
+                        <outlet property="titleLabel2" destination="rLN-4x-kvm" id="HR4-d6-vNq"/>
                         <segue destination="5zU-Nm-2ko" kind="show" identifier="table_seg" id="bVy-vh-Mu8"/>
                     </connections>
                 </viewController>
@@ -589,7 +610,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="K5t-Sd-M5k"/>
+        <segue reference="efe-ww-GhW"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
     <resources>
