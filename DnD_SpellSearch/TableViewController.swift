@@ -53,6 +53,9 @@ class TableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier=="tableToDetail" {
             let Details = segue.destination as! FirstViewController
+            let backButton = UIBarButtonItem()
+            backButton.title = "Back"
+            navigationItem.backBarButtonItem = backButton
             Details.passedInformation = selectedInformation
         }
     }
