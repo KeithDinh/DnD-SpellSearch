@@ -12,8 +12,14 @@ class TableViewController: UITableViewController {
 
     var passedList = [Spells]()
     var selectedInformation:String = ""
+    @IBOutlet weak var settingsButton: UIBarButtonItem!
+
+    var searchManager = SearchManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        //searchManager.delegate = self
+        searchManager.fetchList()
         
         // add the background image for the tableView
         tableView.backgroundView = UIImageView(image: UIImage(named: "urn_aaid_sc_US_1777706d-7d97-4e70-90b7-1a206e1e9534"))
@@ -41,14 +47,14 @@ class TableViewController: UITableViewController {
         let cell_name = cell.viewWithTag(1) as! UILabel
         
         // set font type to Times New Roman, size = 30
-        cell_name.font = UIFont(name: "Mr.EavesSmallCaps", size: 30)
+        cell_name.font = UIFont(name: "Mr.EavesSmallCaps", size: 20)
         
         cell_name.text = passedList[indexPath.row].name
         
         return cell
     }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
+        return 50
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier=="tableToDetail" {
@@ -65,3 +71,4 @@ class TableViewController: UITableViewController {
         self.performSegue(withIdentifier: "tableToDetail", sender: self)
     }
 }
+
