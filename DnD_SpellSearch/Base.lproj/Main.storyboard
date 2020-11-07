@@ -313,60 +313,6 @@
             </objects>
             <point key="canvasLocation" x="550" y="157"/>
         </scene>
-        <!--Table View Controller-->
-        <scene sceneID="sU3-Hb-TNz">
-            <objects>
-                <tableViewController id="5zU-Nm-2ko" customClass="TableViewController" customModule="DnD_SpellSearch" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="kjT-LJ-y52">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="82" id="jqz-dt-u4h">
-                                <rect key="frame" x="0.0" y="28" width="375" height="82"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jqz-dt-u4h" id="frd-7x-H5C">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="82"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JOM-cm-IQ7">
-                                            <rect key="frame" x="0.0" y="1" width="375" height="80"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="80" id="9Wq-bA-bFa"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                            <color key="textColor" red="0.34509803919999998" green="0.090196078430000007" blue="0.050980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="JOM-cm-IQ7" firstAttribute="centerX" secondItem="frd-7x-H5C" secondAttribute="centerX" id="FLK-cY-pBC"/>
-                                        <constraint firstItem="JOM-cm-IQ7" firstAttribute="centerY" secondItem="frd-7x-H5C" secondAttribute="centerY" id="GDw-I2-Lrk"/>
-                                        <constraint firstItem="JOM-cm-IQ7" firstAttribute="leading" secondItem="frd-7x-H5C" secondAttribute="leading" id="MvQ-G1-hXr"/>
-                                        <constraint firstAttribute="trailing" secondItem="JOM-cm-IQ7" secondAttribute="trailing" id="Pi5-xu-uZM"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="5zU-Nm-2ko" id="1v0-qI-sz8"/>
-                            <outlet property="delegate" destination="5zU-Nm-2ko" id="a1Y-Jm-2wt"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="iOM-aI-5uv">
-                        <barButtonItem key="backBarButtonItem" title="Results" id="KSi-jP-Be9"/>
-                        <barButtonItem key="rightBarButtonItem" image="questionmark" catalog="system" id="tR3-OB-zqA">
-                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="settingsButton" destination="tR3-OB-zqA" id="J3g-oP-KIf"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="u9X-Po-NLp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="142" y="1191"/>
-        </scene>
         <!--Favorites-->
         <scene sceneID="9nS-6a-XQi">
             <objects>
@@ -584,7 +530,6 @@
         <image name="heart" catalog="system" width="128" height="109"/>
         <image name="house" catalog="system" width="128" height="110"/>
         <image name="info.circle" catalog="system" width="128" height="121"/>
-        <image name="questionmark" catalog="system" width="96" height="128"/>
         <image name="second" width="30" height="30"/>
         <image name="urn_aaid_sc_US_1777706d-7d97-4e70-90b7-1a206e1e9534" width="375" height="570"/>
     </resources>
