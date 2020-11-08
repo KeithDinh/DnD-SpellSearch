@@ -11,29 +11,24 @@ import UIKit
 class SearchViewController: UIViewController, UITextFieldDelegate {
 
     var spellList = [Spells]()
+    var filteredList = [Spells]()
     var selectedSpell: String = ""
 
-    @IBOutlet weak var searchField: UISearchBar!
+    @IBOutlet var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
-    
     var searchManager = SearchManager()
-    let searchController = UISearchController(searchResultsController: nil)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setFonts()
+        navigationController?.navigationBar.topItem?.titleView = searchBar
         
         searchManager.delegate = self
-        
         tableView.delegate = self
         tableView.dataSource = self
+        searchBar.delegate = self
         
-        searchController.searchResultsUpdater = self
-        searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Search"
-        searchField = searchController.searchBar
-        definesPresentationContext = true
         searchManager.fetchList()
         
         // this one is to create event listener when click on return after typing
@@ -180,10 +175,8 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
         
         // navigationbar background color
         navigationController?.navigationBar.barTintColor = UIColor(red: 0.13, green: 0.13, blue: 0.12, alpha: 1.00)
-        
         // set title color to white
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
-        
         // set battery icon, time, network service to white
         navigationController?.navigationBar.barStyle = .black
 
@@ -193,9 +186,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
 
     }
     override func viewWillDisappear(_ animated: Bool) {
-        // Function generated warnings (Product -> Scheme -> Edit Scheme -> Run -> Run -> Main Thread Checker)
-        //let secondTab = self.tabBarController?.viewControllers![1] as! AllTableViewController
-        //secondTab.passedList = spellList
+
     }
     override func viewDidDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
@@ -229,13 +220,13 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
 }
 extension SearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedSpell = spellList[indexPath.row].url
+        selectedSpell = filteredList[indexPath.row].url
         performSegue(withIdentifier: "showDetail", sender: self)
     }
 }
 extension SearchViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return spellList.count
+        return filteredList.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
@@ -243,58 +234,31 @@ extension SearchViewController: UITableViewDataSource{
         
         let cellName = cell.viewWithTag(1) as! UILabel
         cellName.font = UIFont(name: "Mr.EavesSmallCaps", size: 20)
-        cellName.text = spellList[indexPath.row].name
+        cellName.text = filteredList[indexPath.row].name
         
         return cell
     }
     
     
 }
-extension SearchViewController: UISearchResultsUpdating {
-    func updateSearchResults(for searchController: UISearchController) {
-        //
-    }
-}
-extension SearchViewController {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool{
-        print(searchField.text!)
-        searchField.endEditing(true)
-        return true
-    }
-    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-        if textField.text != "" {
-            return true
-        } else {
-            textField.placeholder = "Search"
-            return false
+
+extension SearchViewController: UISearchBarDelegate {
+    //guides.codepath.com/ios/Search-Bar-Guide
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String){
+        filteredList = searchText.isEmpty ? spellList : spellList.filter {(list:Spells) -> Bool in
+            return list.name.range(of:searchText, options: .caseInsensitive, range:nil, locale: nil) != nil
+            
         }
+        tableView.reloadData()
     }
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        //Use searchTextField.text
-        if let keyword = searchField.text {
-            filterListWithKeyword(keyword: keyword)
-        }
-       searchField.text = ""
-    }
-    func filterListWithKeyword (keyword: String){
-        let key = keyword.lowercased().replacingOccurrences(of: " ", with: "-")
-        var filteredList = [Spells]()
-        for item in spellList {
-            if item.index.contains("\(key)") {
-                filteredList.append(item)
-            }
-        }
-        DispatchQueue.main.async {
-            self.spellList = filteredList
-            self.tableView.reloadData()
-        }
-        
-    }
+    
 }
 extension SearchViewController: SearchManagerDelegate {
     func didUpdateList (_ searchManager: SearchManager, list: [Spells]) {
         DispatchQueue.main.async {
             self.spellList = list
+            self.filteredList = list
+            self.searchBar.text = ""
             self.tableView.reloadData()
         }
     }

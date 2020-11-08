@@ -376,9 +376,9 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="dbZ-A5-aq6" userLabel="Header Stack View">
                                 <rect key="frame" x="0.0" y="44" width="375" height="10"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vuO-VW-174">
+                                    <label opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vuO-VW-174">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="10"/>
-                                        <color key="backgroundColor" red="0.84708064790000004" green="0.12549933790000001" blue="0.12945941089999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="10" id="jYw-Sk-KlK"/>
                                         </constraints>
@@ -388,15 +388,8 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <searchBar contentMode="redraw" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="vAb-MD-d9m">
-                                <rect key="frame" x="0.0" y="54" width="375" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="EBt-Ba-y4k"/>
-                                </constraints>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zqG-TO-Pbz">
-                                <rect key="frame" x="0.0" y="134" width="375" height="484"/>
+                                <rect key="frame" x="0.0" y="94" width="375" height="524"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -425,44 +418,41 @@
                                 </prototypes>
                             </tableView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qty-QD-Ueo">
-                                <rect key="frame" x="0.0" y="94" width="375" height="40"/>
+                                <rect key="frame" x="0.0" y="54" width="375" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="4o4-Zz-pH7"/>
                                 </constraints>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="7AH-ZD-r02"/>
                                     <barButtonItem title="Level" id="wWB-ly-EkA">
-                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <action selector="levelButton:" destination="f5z-E8-5Kj" id="aZX-zt-kH5"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="3mW-aV-vsr"/>
                                     <barButtonItem title="School" id="im0-v5-b48">
-                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <action selector="schoolButton:" destination="f5z-E8-5Kj" id="ELs-tl-Fb1"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="jCd-1q-alr"/>
                                 </items>
-                                <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </toolbar>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="qty-QD-Ueo" firstAttribute="top" secondItem="dbZ-A5-aq6" secondAttribute="bottom" id="24A-KD-TrX"/>
                             <constraint firstItem="dbZ-A5-aq6" firstAttribute="leading" secondItem="OWg-xE-dPO" secondAttribute="leading" id="5KN-aP-MS5"/>
                             <constraint firstItem="qty-QD-Ueo" firstAttribute="trailing" secondItem="OWg-xE-dPO" secondAttribute="trailing" id="5xG-6N-iun"/>
                             <constraint firstAttribute="bottom" secondItem="wbR-hy-XWX" secondAttribute="bottom" id="92M-qj-3e2"/>
-                            <constraint firstItem="vAb-MD-d9m" firstAttribute="leading" secondItem="OWg-xE-dPO" secondAttribute="leading" id="GKe-6T-Opm"/>
                             <constraint firstItem="zqG-TO-Pbz" firstAttribute="top" secondItem="qty-QD-Ueo" secondAttribute="bottom" id="KnW-7Y-jqJ"/>
                             <constraint firstItem="qty-QD-Ueo" firstAttribute="leading" secondItem="OWg-xE-dPO" secondAttribute="leading" id="Oex-n3-h9q"/>
                             <constraint firstItem="zqG-TO-Pbz" firstAttribute="bottom" secondItem="OWg-xE-dPO" secondAttribute="bottom" id="Pv3-qr-X4n"/>
-                            <constraint firstItem="vAb-MD-d9m" firstAttribute="trailing" secondItem="OWg-xE-dPO" secondAttribute="trailing" id="R83-PR-9AR"/>
-                            <constraint firstItem="qty-QD-Ueo" firstAttribute="top" secondItem="vAb-MD-d9m" secondAttribute="bottom" id="RNN-GU-oXf"/>
                             <constraint firstItem="dbZ-A5-aq6" firstAttribute="top" secondItem="OWg-xE-dPO" secondAttribute="top" id="SlW-R4-Dm9"/>
                             <constraint firstItem="dbZ-A5-aq6" firstAttribute="trailing" secondItem="OWg-xE-dPO" secondAttribute="trailing" id="THx-CQ-UsB"/>
-                            <constraint firstItem="vAb-MD-d9m" firstAttribute="top" secondItem="dbZ-A5-aq6" secondAttribute="bottom" id="UzS-KU-UDv"/>
                             <constraint firstItem="zqG-TO-Pbz" firstAttribute="leading" secondItem="OWg-xE-dPO" secondAttribute="leading" id="XaC-3N-GyL"/>
                             <constraint firstItem="wbR-hy-XWX" firstAttribute="top" secondItem="OWg-xE-dPO" secondAttribute="top" id="b8r-Hv-efv"/>
                             <constraint firstItem="wbR-hy-XWX" firstAttribute="trailing" secondItem="OWg-xE-dPO" secondAttribute="trailing" id="emi-CO-dbt"/>
@@ -473,14 +463,19 @@
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="search" id="FTt-6y-IaX"/>
                     <connections>
-                        <outlet property="searchField" destination="vAb-MD-d9m" id="gL3-p9-Q1v"/>
+                        <outlet property="searchBar" destination="eTa-VH-BNC" id="wdW-20-lD8"/>
                         <outlet property="tableView" destination="zqG-TO-Pbz" id="5Zj-SK-RFu"/>
                         <segue destination="9pv-A4-QxB" kind="show" identifier="showDetail" id="GTO-Kg-481"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T3P-ns-GIV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <searchBar contentMode="redraw" barStyle="black" placeholder="Search" id="eTa-VH-BNC">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <textInputTraits key="textInputTraits"/>
+                </searchBar>
             </objects>
-            <point key="canvasLocation" x="-1004" y="487.10644677661173"/>
+            <point key="canvasLocation" x="-1004" y="563"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Cyg-Jd-Z7o">
