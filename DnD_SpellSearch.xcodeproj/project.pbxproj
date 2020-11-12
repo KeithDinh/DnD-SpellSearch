@@ -27,6 +27,7 @@
 		3FDF5D9325493BF5004BA8B9 /* Bookinsanity Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3FDF5D8A25493BF5004BA8B9 /* Bookinsanity Bold.otf */; };
 		3FDF5D9425493BF5004BA8B9 /* Mr Eaves Small Caps.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3FDF5D8B25493BF5004BA8B9 /* Mr Eaves Small Caps.otf */; };
 		3FF4F12F25564DEF004746BF /* SearchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF4F12E25564DEF004746BF /* SearchManager.swift */; };
+		84B9E4EB255D202A0052C837 /* CustomLaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B9E4EA255D202A0052C837 /* CustomLaunchViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		3FDF5D8A25493BF5004BA8B9 /* Bookinsanity Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Bookinsanity Bold.otf"; path = "DnD_SpellSearch/5th Edition Font Clones CC/Bookinsanity Bold.otf"; sourceTree = SOURCE_ROOT; };
 		3FDF5D8B25493BF5004BA8B9 /* Mr Eaves Small Caps.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Mr Eaves Small Caps.otf"; path = "DnD_SpellSearch/5th Edition Font Clones CC/Mr Eaves Small Caps.otf"; sourceTree = SOURCE_ROOT; };
 		3FF4F12E25564DEF004746BF /* SearchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchManager.swift; sourceTree = "<group>"; };
+		84B9E4EA255D202A0052C837 /* CustomLaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLaunchViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				3FDF5D2425490822004BA8B9 /* Fonts */,
+				84B9E4EA255D202A0052C837 /* CustomLaunchViewController.swift */,
 				3F56543025366BCF00348E3D /* AppDelegate.swift */,
 				3F56543225366BCF00348E3D /* SceneDelegate.swift */,
 				3F56544B25366DBD00348E3D /* SearchViewController.swift */,
@@ -200,6 +203,7 @@
 				3F56543D25366BCF00348E3D /* DnD_SpellSearch.xcdatamodeld in Sources */,
 				3F56544C25366DBD00348E3D /* SearchViewController.swift in Sources */,
 				3F740C7D253F8E3100044FFE /* FavoritesTableViewController.swift in Sources */,
+				84B9E4EB255D202A0052C837 /* CustomLaunchViewController.swift in Sources */,
 				3F56543525366BCF00348E3D /* FirstViewController.swift in Sources */,
 				3F56543125366BCF00348E3D /* AppDelegate.swift in Sources */,
 				3FF4F12F25564DEF004746BF /* SearchManager.swift in Sources */,
