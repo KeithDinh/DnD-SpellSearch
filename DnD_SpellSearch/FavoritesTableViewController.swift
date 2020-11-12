@@ -16,6 +16,7 @@ class FavoritesTableViewController: UITableViewController {
     
     // initialize the core data object
     var Favorite: [NSManagedObject] = []
+    //var testFavs = [["Acid Arrow","/api/spells/acid-arrow"],["Cure Wounds","/api/spells/cure-wounds"],["Wish","/api/spells/wish"]]
     var selectedFav: String = ""
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -9,39 +9,68 @@
 import UIKit
 
 class SearchViewController: UIViewController, UITextFieldDelegate {
-    
-    @IBOutlet weak var titleLabel1: UILabel!
-    @IBOutlet weak var titleLabel2: UILabel!
-    @IBOutlet weak var subTitleLabel: UILabel!
-    var schoolList = [Spells]()
-    var schoolSpecificList = [Spells]()
+
     var spellList = [Spells]()
-    var similarList = [Spells]()
+    var filteredList = [Spells]()
+    var selectedSpell: String = ""
+
+    @IBOutlet var searchBar: UISearchBar!
+    @IBOutlet weak var tableView: UITableView!
+    var searchManager = SearchManager()
     
-    @IBOutlet weak var searchField: UITextField!
-    @IBOutlet var schoolField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setFonts()
-        for family in UIFont.familyNames.sorted() {
-            let names = UIFont.fontNames(forFamilyName: family)
-            print("Family: \(family) Font names: \(names)")
-        }
-        let spellUrl = URL(string: "https://www.dnd5eapi.co/api/spells")
-        if spellUrl != nil {
-            downloadData(url: spellUrl!, type: "spell")
-        }
-        let schoolUrl = URL(string: "https://www.dnd5eapi.co/api/magic-schools")
-        if schoolUrl != nil {
-            downloadData(url: schoolUrl!, type: "school")
-        }
+        navigationController?.navigationBar.topItem?.titleView = searchBar
+        
+        searchManager.delegate = self
+        tableView.delegate = self
+        tableView.dataSource = self
+        searchBar.delegate = self
+        
+        searchManager.fetchList()
+        
         // this one is to create event listener when click on return after typing
         // it called function onReturn
-        self.searchField.addTarget(self, action: #selector(onReturn), for: UIControl.Event.editingDidEndOnExit)
-        schoolField.delegate = self
+       // self.searchField.addTarget(self, action: #selector(onReturn), for: UIControl.Event.editingDidEndOnExit)
+        
     }
     
+    @IBAction func levelButton(_ sender: Any) {
+        let levelSelect = UIAlertController(title: "Sort by Level", message:"", preferredStyle: .actionSheet)
+               levelSelect.addAction(UIAlertAction(title: "Any Level", style: .default, handler: {_ in
+                self.searchManager.fetchList()
+               }))
+        for level in Range(0...9) {
+            var title = ""
+            if level == 0 {
+                title = "Cantrip"
+            }else {
+                title = "\(level)"
+            }
+            levelSelect.addAction(UIAlertAction(title: title, style: .default, handler: { _ in
+                self.searchManager.fetchLevelList(level: level)
+
+            }))
+        }
+        self.present(levelSelect, animated: true, completion: nil)
+    }
+    
+    @IBAction func schoolButton(_ sender: Any) {
+        let schoolSelect = UIAlertController(title: "Sort by School", message:"", preferredStyle: .actionSheet)
+               schoolSelect.addAction(UIAlertAction(title: "Any School", style: .default, handler: {_ in
+                self.searchManager.fetchList()
+               }))
+        for school in spellSchools {
+            schoolSelect.addAction(UIAlertAction(title: school, style: .default, handler: { _ in
+                self.searchManager.fetchSchoolList(school: school)
+            }))
+        }
+        self.present(schoolSelect, animated: true, completion: nil)
+    }
     // WARNING
+    /*
     func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.resignFirstResponder()
         let actionSheetAlert = UIAlertController(title: "Pick a School", message: "", preferredStyle: .actionSheet)
@@ -60,14 +89,14 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
                 
             }))
         }
-
         self.present(actionSheetAlert, animated: true, completion: nil)
     }
-    
+    */
+    /*
     @IBAction func onReturn()
     {
         // not sure why, but need this line
-        self.searchField.resignFirstResponder()
+        //self.searchField.resignFirstResponder()
         
         // Dillon's codes
         
@@ -95,16 +124,15 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
         }
         performSegue(withIdentifier: "table_seg", sender: self)
     }
-
+*/
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "table_seg" {
-            let TableView = segue.destination as! TableViewController
-            TableView.passedList = similarList
-            self.similarList = []
+        if segue.identifier=="showDetail" {
+            let Details = segue.destination as! FirstViewController
+            Details.passedInformation = selectedSpell
         }
     }
     
-    
+    /*
     func decodeData(downloaded_data: Data, type: String){
          do
          {
@@ -142,31 +170,27 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
             }
         }).resume()
     }
-    //hide nav bar then show again once done.
+ */
     override func viewDidAppear(_ animated: Bool) {
         
         // navigationbar background color
         navigationController?.navigationBar.barTintColor = UIColor(red: 0.13, green: 0.13, blue: 0.12, alpha: 1.00)
-        
         // set title color to white
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
-        
         // set battery icon, time, network service to white
         navigationController?.navigationBar.barStyle = .black
 
         super.viewWillAppear(true)
-        navigationController?.setNavigationBarHidden(true, animated: true)
+        //navigationController?.setNavigationBarHidden(true, animated: true)
 
 
     }
     override func viewWillDisappear(_ animated: Bool) {
-        // Function generated warnings (Product -> Scheme -> Edit Scheme -> Run -> Run -> Main Thread Checker)
-        let secondTab = self.tabBarController?.viewControllers![1] as! AllTableViewController
-        secondTab.passedList = spellList
+
     }
     override func viewDidDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
-        navigationController?.setNavigationBarHidden(false, animated: true)
+        //navigationController?.setNavigationBarHidden(false, animated: true)
     }
     func createAlert(title: String, message: String)
     {
@@ -181,11 +205,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
         self.present(alert, animated: true, completion: nil)
     }
     func setFonts() {
-        titleLabel1.font = UIFont(name: "NodestoCapsCondensed", size: 30)
-        titleLabel2.font = UIFont(name: "NodestoCapsCondensed", size: 35)
-        subTitleLabel.font = UIFont(name: "NodestoCapsCondensed", size: 15)
-        schoolField.font = UIFont(name: "Bookinsanity", size: 17)
-        searchField.font = UIFont(name: "Bookinsanity", size: 17)
+        //searchField.font = UIFont(name: "Bookinsanity", size: 17)
     }
     /*
     // MARK: - Navigation
@@ -197,4 +217,54 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
     }
     */
 
+}
+extension SearchViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedSpell = filteredList[indexPath.row].url
+        performSegue(withIdentifier: "showDetail", sender: self)
+    }
+}
+extension SearchViewController: UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return filteredList.count
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        cell.layer.backgroundColor = UIColor.clear.cgColor
+        
+        let cellName = cell.viewWithTag(1) as! UILabel
+        cellName.font = UIFont(name: "Mr.EavesSmallCaps", size: 20)
+        cellName.text = filteredList[indexPath.row].name
+        
+        return cell
+    }
+    
+    
+}
+
+extension SearchViewController: UISearchBarDelegate {
+    //guides.codepath.com/ios/Search-Bar-Guide
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String){
+        filteredList = searchText.isEmpty ? spellList : spellList.filter {(list:Spells) -> Bool in
+            return list.name.range(of:searchText, options: .caseInsensitive, range:nil, locale: nil) != nil
+            
+        }
+        tableView.reloadData()
+    }
+    
+}
+extension SearchViewController: SearchManagerDelegate {
+    func didUpdateList (_ searchManager: SearchManager, list: [Spells]) {
+        DispatchQueue.main.async {
+            self.spellList = list
+            self.filteredList = list
+            self.searchBar.text = ""
+            self.tableView.reloadData()
+        }
+    }
+    
+    
+    func didFailWithError(error: Error) {
+        print(error)
+    }
 }

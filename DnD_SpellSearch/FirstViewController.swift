@@ -18,7 +18,8 @@ class FirstViewController: UIViewController {
     
     @IBOutlet weak var favButton: UIBarButtonItem!
     @IBOutlet weak var navBar: UINavigationItem!
-
+    
+    @IBOutlet weak var spellName: UILabel!
     @IBOutlet weak var spellSchool: UILabel!
     @IBOutlet weak var labelCastTime: UILabel!
     @IBOutlet weak var spellCastingTime: UILabel!
@@ -258,7 +259,7 @@ class FirstViewController: UIViewController {
     }
     func loadData(){
         DispatchQueue.main.async {
-            self.navBar.title = self.thisSpell.name
+            self.spellName.text = self.thisSpell.name
             self.checkFav()
             self.getSchool()
             self.getRitual()
@@ -279,7 +280,8 @@ class FirstViewController: UIViewController {
         super.viewWillAppear(animated)
     }
     func setFonts(){
-        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Bookinsanity-Italic", size: 20)!]
+        //UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Bookinsanity-Italic", size: 20)!]
+        spellName.font = UIFont(name: "Bookinsanity-BoldItalic", size: 20)
         spellSchool.font = UIFont(name: "Bookinsanity-Italic", size: 17)
         labelCastTime.font = UIFont(name: "Bookinsanity-BoldItalic", size: 17)
         spellCastingTime.font = UIFont(name: "Bookinsanity-Italic", size: 17)

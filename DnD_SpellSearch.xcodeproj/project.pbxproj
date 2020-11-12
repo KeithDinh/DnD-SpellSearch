@@ -14,20 +14,20 @@
 		3F56543D25366BCF00348E3D /* DnD_SpellSearch.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3F56543B25366BCF00348E3D /* DnD_SpellSearch.xcdatamodeld */; };
 		3F56543F25366BD300348E3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F56543E25366BD300348E3D /* Assets.xcassets */; };
 		3F56544225366BD300348E3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F56544025366BD300348E3D /* LaunchScreen.storyboard */; };
-		3F56544A25366D9F00348E3D /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F56544925366D9F00348E3D /* TableViewController.swift */; };
 		3F56544C25366DBD00348E3D /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F56544B25366DBD00348E3D /* SearchViewController.swift */; };
 		3F740C7D253F8E3100044FFE /* FavoritesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F740C7C253F8E3100044FFE /* FavoritesTableViewController.swift */; };
 		3FDF5D132547DCB4004BA8B9 /* SpellSearchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FDF5D122547DCB4004BA8B9 /* SpellSearchData.swift */; };
-		842DF56625493850005B5238 /* Bookinsanity Bold Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 842DF55D25493850005B5238 /* Bookinsanity Bold Italic.otf */; };
-		842DF56725493850005B5238 /* Nodesto Caps Condensed.otf in Resources */ = {isa = PBXBuildFile; fileRef = 842DF55E25493850005B5238 /* Nodesto Caps Condensed.otf */; };
-		842DF56825493850005B5238 /* Bookinsanity Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 842DF55F25493850005B5238 /* Bookinsanity Italic.otf */; };
-		842DF56925493850005B5238 /* Mr Eaves Small Caps.otf in Resources */ = {isa = PBXBuildFile; fileRef = 842DF56025493850005B5238 /* Mr Eaves Small Caps.otf */; };
-		842DF56A25493850005B5238 /* Bookinsanity Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 842DF56125493850005B5238 /* Bookinsanity Bold.otf */; };
-		842DF56B25493850005B5238 /* Bookinsanity.otf in Resources */ = {isa = PBXBuildFile; fileRef = 842DF56225493850005B5238 /* Bookinsanity.otf */; };
-		842DF56C25493850005B5238 /* Nodesto Caps Condensed Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 842DF56325493850005B5238 /* Nodesto Caps Condensed Italic.otf */; };
-		842DF56D25493850005B5238 /* Nodesto Caps Condensed Bold Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 842DF56425493850005B5238 /* Nodesto Caps Condensed Bold Italic.otf */; };
-		842DF56E25493850005B5238 /* Nodesto Caps Condensed Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 842DF56525493850005B5238 /* Nodesto Caps Condensed Bold.otf */; };
-		847F41452544036B00D8C50A /* AllTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847F41442544036B00D8C50A /* AllTableViewController.swift */; };
+		3FDF5D8C25493BF5004BA8B9 /* Nodesto Caps Condensed.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3FDF5D8325493BF4004BA8B9 /* Nodesto Caps Condensed.otf */; };
+		3FDF5D8D25493BF5004BA8B9 /* Scaly Sans Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3FDF5D8425493BF4004BA8B9 /* Scaly Sans Bold.otf */; };
+		3FDF5D8E25493BF5004BA8B9 /* Nodesto Caps Condensed Bold Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3FDF5D8525493BF4004BA8B9 /* Nodesto Caps Condensed Bold Italic.otf */; };
+		3FDF5D8F25493BF5004BA8B9 /* Nodesto Caps Condensed Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3FDF5D8625493BF4004BA8B9 /* Nodesto Caps Condensed Bold.otf */; };
+		3FDF5D9025493BF5004BA8B9 /* Bookinsanity.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3FDF5D8725493BF5004BA8B9 /* Bookinsanity.otf */; };
+		3FDF5D9125493BF5004BA8B9 /* Scaly Sans Bold Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3FDF5D8825493BF5004BA8B9 /* Scaly Sans Bold Italic.otf */; };
+		3FDF5D9225493BF5004BA8B9 /* Nodesto Caps Condensed Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3FDF5D8925493BF5004BA8B9 /* Nodesto Caps Condensed Italic.otf */; };
+		3FDF5D9325493BF5004BA8B9 /* Bookinsanity Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3FDF5D8A25493BF5004BA8B9 /* Bookinsanity Bold.otf */; };
+		3FDF5D9425493BF5004BA8B9 /* Mr Eaves Small Caps.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3FDF5D8B25493BF5004BA8B9 /* Mr Eaves Small Caps.otf */; };
+		3FF4F12F25564DEF004746BF /* SearchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF4F12E25564DEF004746BF /* SearchManager.swift */; };
+		84B9E4EB255D202A0052C837 /* CustomLaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B9E4EA255D202A0052C837 /* CustomLaunchViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,20 +40,20 @@
 		3F56543E25366BD300348E3D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3F56544125366BD300348E3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3F56544325366BD300348E3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3F56544925366D9F00348E3D /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		3F56544B25366DBD00348E3D /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		3F740C7C253F8E3100044FFE /* FavoritesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewController.swift; sourceTree = "<group>"; };
 		3FDF5D122547DCB4004BA8B9 /* SpellSearchData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellSearchData.swift; sourceTree = "<group>"; };
-		842DF55D25493850005B5238 /* Bookinsanity Bold Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Bookinsanity Bold Italic.otf"; path = "../../../Bookinsanity Bold Italic.otf"; sourceTree = "<group>"; };
-		842DF55E25493850005B5238 /* Nodesto Caps Condensed.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nodesto Caps Condensed.otf"; sourceTree = "<group>"; };
-		842DF55F25493850005B5238 /* Bookinsanity Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Bookinsanity Italic.otf"; path = "../../../Bookinsanity Italic.otf"; sourceTree = "<group>"; };
-		842DF56025493850005B5238 /* Mr Eaves Small Caps.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Mr Eaves Small Caps.otf"; sourceTree = "<group>"; };
-		842DF56125493850005B5238 /* Bookinsanity Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Bookinsanity Bold.otf"; path = "../../../Bookinsanity Bold.otf"; sourceTree = "<group>"; };
-		842DF56225493850005B5238 /* Bookinsanity.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Bookinsanity.otf; path = ../../../Bookinsanity.otf; sourceTree = "<group>"; };
-		842DF56325493850005B5238 /* Nodesto Caps Condensed Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nodesto Caps Condensed Italic.otf"; sourceTree = "<group>"; };
-		842DF56425493850005B5238 /* Nodesto Caps Condensed Bold Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nodesto Caps Condensed Bold Italic.otf"; sourceTree = "<group>"; };
-		842DF56525493850005B5238 /* Nodesto Caps Condensed Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nodesto Caps Condensed Bold.otf"; sourceTree = "<group>"; };
-		847F41442544036B00D8C50A /* AllTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTableViewController.swift; sourceTree = "<group>"; };
+		3FDF5D8325493BF4004BA8B9 /* Nodesto Caps Condensed.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Nodesto Caps Condensed.otf"; path = "DnD_SpellSearch/5th Edition Font Clones CC/Nodesto Caps Condensed.otf"; sourceTree = SOURCE_ROOT; };
+		3FDF5D8425493BF4004BA8B9 /* Scaly Sans Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Scaly Sans Bold.otf"; path = "DnD_SpellSearch/5th Edition Font Clones CC/Scaly Sans Bold.otf"; sourceTree = SOURCE_ROOT; };
+		3FDF5D8525493BF4004BA8B9 /* Nodesto Caps Condensed Bold Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Nodesto Caps Condensed Bold Italic.otf"; path = "DnD_SpellSearch/5th Edition Font Clones CC/Nodesto Caps Condensed Bold Italic.otf"; sourceTree = SOURCE_ROOT; };
+		3FDF5D8625493BF4004BA8B9 /* Nodesto Caps Condensed Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Nodesto Caps Condensed Bold.otf"; path = "DnD_SpellSearch/5th Edition Font Clones CC/Nodesto Caps Condensed Bold.otf"; sourceTree = SOURCE_ROOT; };
+		3FDF5D8725493BF5004BA8B9 /* Bookinsanity.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Bookinsanity.otf; path = "DnD_SpellSearch/5th Edition Font Clones CC/Bookinsanity.otf"; sourceTree = SOURCE_ROOT; };
+		3FDF5D8825493BF5004BA8B9 /* Scaly Sans Bold Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Scaly Sans Bold Italic.otf"; path = "DnD_SpellSearch/5th Edition Font Clones CC/Scaly Sans Bold Italic.otf"; sourceTree = SOURCE_ROOT; };
+		3FDF5D8925493BF5004BA8B9 /* Nodesto Caps Condensed Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Nodesto Caps Condensed Italic.otf"; path = "DnD_SpellSearch/5th Edition Font Clones CC/Nodesto Caps Condensed Italic.otf"; sourceTree = SOURCE_ROOT; };
+		3FDF5D8A25493BF5004BA8B9 /* Bookinsanity Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Bookinsanity Bold.otf"; path = "DnD_SpellSearch/5th Edition Font Clones CC/Bookinsanity Bold.otf"; sourceTree = SOURCE_ROOT; };
+		3FDF5D8B25493BF5004BA8B9 /* Mr Eaves Small Caps.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Mr Eaves Small Caps.otf"; path = "DnD_SpellSearch/5th Edition Font Clones CC/Mr Eaves Small Caps.otf"; sourceTree = SOURCE_ROOT; };
+		3FF4F12E25564DEF004746BF /* SearchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchManager.swift; sourceTree = "<group>"; };
+		84B9E4EA255D202A0052C837 /* CustomLaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLaunchViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,12 +86,12 @@
 		3F56542F25366BCF00348E3D /* DnD_SpellSearch */ = {
 			isa = PBXGroup;
 			children = (
+				3FDF5D2425490822004BA8B9 /* Fonts */,
+				84B9E4EA255D202A0052C837 /* CustomLaunchViewController.swift */,
 				3F56543025366BCF00348E3D /* AppDelegate.swift */,
 				3F56543225366BCF00348E3D /* SceneDelegate.swift */,
 				3F56544B25366DBD00348E3D /* SearchViewController.swift */,
-				847F41442544036B00D8C50A /* AllTableViewController.swift */,
 				3F740C7C253F8E3100044FFE /* FavoritesTableViewController.swift */,
-				3F56544925366D9F00348E3D /* TableViewController.swift */,
 				3F56543425366BCF00348E3D /* FirstViewController.swift */,
 				3F56543825366BCF00348E3D /* Main.storyboard */,
 				3F56543E25366BD300348E3D /* Assets.xcassets */,
@@ -99,7 +99,7 @@
 				3F56544325366BD300348E3D /* Info.plist */,
 				3F56543B25366BCF00348E3D /* DnD_SpellSearch.xcdatamodeld */,
 				3FDF5D122547DCB4004BA8B9 /* SpellSearchData.swift */,
-				3FDF5D2425490822004BA8B9 /* Fonts */,
+				3FF4F12E25564DEF004746BF /* SearchManager.swift */,
 			);
 			path = DnD_SpellSearch;
 			sourceTree = "<group>";
@@ -107,15 +107,15 @@
 		3FDF5D2425490822004BA8B9 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				842DF55D25493850005B5238 /* Bookinsanity Bold Italic.otf */,
-				842DF56125493850005B5238 /* Bookinsanity Bold.otf */,
-				842DF55F25493850005B5238 /* Bookinsanity Italic.otf */,
-				842DF56225493850005B5238 /* Bookinsanity.otf */,
-				842DF56025493850005B5238 /* Mr Eaves Small Caps.otf */,
-				842DF56425493850005B5238 /* Nodesto Caps Condensed Bold Italic.otf */,
-				842DF56525493850005B5238 /* Nodesto Caps Condensed Bold.otf */,
-				842DF56325493850005B5238 /* Nodesto Caps Condensed Italic.otf */,
-				842DF55E25493850005B5238 /* Nodesto Caps Condensed.otf */,
+				3FDF5D8A25493BF5004BA8B9 /* Bookinsanity Bold.otf */,
+				3FDF5D8725493BF5004BA8B9 /* Bookinsanity.otf */,
+				3FDF5D8B25493BF5004BA8B9 /* Mr Eaves Small Caps.otf */,
+				3FDF5D8525493BF4004BA8B9 /* Nodesto Caps Condensed Bold Italic.otf */,
+				3FDF5D8625493BF4004BA8B9 /* Nodesto Caps Condensed Bold.otf */,
+				3FDF5D8925493BF5004BA8B9 /* Nodesto Caps Condensed Italic.otf */,
+				3FDF5D8325493BF4004BA8B9 /* Nodesto Caps Condensed.otf */,
+				3FDF5D8825493BF5004BA8B9 /* Scaly Sans Bold Italic.otf */,
+				3FDF5D8425493BF4004BA8B9 /* Scaly Sans Bold.otf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -178,18 +178,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				842DF56725493850005B5238 /* Nodesto Caps Condensed.otf in Resources */,
-				842DF56625493850005B5238 /* Bookinsanity Bold Italic.otf in Resources */,
 				3F56544225366BD300348E3D /* LaunchScreen.storyboard in Resources */,
-				842DF56D25493850005B5238 /* Nodesto Caps Condensed Bold Italic.otf in Resources */,
+				3FDF5D9425493BF5004BA8B9 /* Mr Eaves Small Caps.otf in Resources */,
+				3FDF5D9025493BF5004BA8B9 /* Bookinsanity.otf in Resources */,
 				3F56543F25366BD300348E3D /* Assets.xcassets in Resources */,
-				842DF56925493850005B5238 /* Mr Eaves Small Caps.otf in Resources */,
-				842DF56825493850005B5238 /* Bookinsanity Italic.otf in Resources */,
-				842DF56C25493850005B5238 /* Nodesto Caps Condensed Italic.otf in Resources */,
+				3FDF5D9325493BF5004BA8B9 /* Bookinsanity Bold.otf in Resources */,
+				3FDF5D9125493BF5004BA8B9 /* Scaly Sans Bold Italic.otf in Resources */,
+				3FDF5D8D25493BF5004BA8B9 /* Scaly Sans Bold.otf in Resources */,
 				3F56543A25366BCF00348E3D /* Main.storyboard in Resources */,
-				842DF56E25493850005B5238 /* Nodesto Caps Condensed Bold.otf in Resources */,
-				842DF56B25493850005B5238 /* Bookinsanity.otf in Resources */,
-				842DF56A25493850005B5238 /* Bookinsanity Bold.otf in Resources */,
+				3FDF5D9225493BF5004BA8B9 /* Nodesto Caps Condensed Italic.otf in Resources */,
+				3FDF5D8E25493BF5004BA8B9 /* Nodesto Caps Condensed Bold Italic.otf in Resources */,
+				3FDF5D8C25493BF5004BA8B9 /* Nodesto Caps Condensed.otf in Resources */,
+				3FDF5D8F25493BF5004BA8B9 /* Nodesto Caps Condensed Bold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -202,13 +202,13 @@
 			files = (
 				3F56543D25366BCF00348E3D /* DnD_SpellSearch.xcdatamodeld in Sources */,
 				3F56544C25366DBD00348E3D /* SearchViewController.swift in Sources */,
-				3F56544A25366D9F00348E3D /* TableViewController.swift in Sources */,
 				3F740C7D253F8E3100044FFE /* FavoritesTableViewController.swift in Sources */,
+				84B9E4EB255D202A0052C837 /* CustomLaunchViewController.swift in Sources */,
 				3F56543525366BCF00348E3D /* FirstViewController.swift in Sources */,
 				3F56543125366BCF00348E3D /* AppDelegate.swift in Sources */,
+				3FF4F12F25564DEF004746BF /* SearchManager.swift in Sources */,
 				3F56543325366BCF00348E3D /* SceneDelegate.swift in Sources */,
 				3FDF5D132547DCB4004BA8B9 /* SpellSearchData.swift in Sources */,
-				847F41452544036B00D8C50A /* AllTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
