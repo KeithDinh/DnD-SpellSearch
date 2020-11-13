@@ -25,14 +25,19 @@ class FavoriteViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // connect FavoriteViewController tableView to UITableViewDeletegate extension below
-        tableView.delegate = self
-        
-        // connect FavoriteViewController tableView to UITableViewDataSource extension below
-        tableView.dataSource = self
+        // if doesn't have this line, the textDidChange won't work
+        navigationController?.navigationBar.topItem?.titleView = searchBar
         
         // connect FavoriteViewController searchBar to UISearchBarDelegate extension below
-        searchBar.delegate = self
+        self.searchBar.delegate = self
+        
+        // connect FavoriteViewController tableView to UITableViewDeletegate extension below
+        self.tableView.delegate = self
+        
+        // connect FavoriteViewController tableView to UITableViewDataSource extension below
+        self.tableView.dataSource = self
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -67,28 +72,27 @@ class FavoriteViewController: UIViewController {
 
 extension FavoriteViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-//        filteredList = searchText.isEmpty ? Favorite : Favorite.filter
-//        {
-//            (list:NSManagedObject) -> Bool in
-//            return list.name.range(of:searchText, options: .caseInsensitive, range:nil, locale: nil) != nil
-//        }
-        print(searchText)
         if !searchText.isEmpty {
-            
-            var predicate: NSPredicate = NSPredicate()
-            predicate = NSPredicate(format: "name contains[c] '\(searchText)'")
-            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+            // 1
+            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+                return
+            }
             let managedObjectContext = appDelegate.persistentContainer.viewContext
+            // 2
             let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Favorite")
-            fetchRequest.predicate = predicate
+            // 3
+            fetchRequest.predicate = NSPredicate(format: "name contains[c] '\(searchText)'")
             do {
                 filteredList = try managedObjectContext.fetch(fetchRequest) as! [NSManagedObject]
             } catch let error as NSError {
                 print("Could not fetch. \(error)")
             }
+        } else {
+            filteredList = Favorite
         }
         tableView.reloadData()
     }
+
 
 }
 
