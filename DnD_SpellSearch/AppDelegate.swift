@@ -14,7 +14,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        Thread.sleep(forTimeInterval: 2.0)
+        
+        // this code is not recommended by everyone, but it served the the purpose of showing splash screen longer
+        Thread.sleep(forTimeInterval: 1.0)
         return true
     }
 

@@ -15,9 +15,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rh7-vx-tGo">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rh7-vx-tGo">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.12939751150000001" green="0.1254995465" blue="0.1176278219" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -32,7 +31,11 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="Rh7-vx-tGo" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="9LP-5S-yjg"/>
+                            <constraint firstAttribute="bottom" secondItem="Rh7-vx-tGo" secondAttribute="bottom" id="Jun-f2-oL9"/>
                             <constraint firstItem="PTb-7p-g0m" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="UQu-vZ-RVx"/>
+                            <constraint firstItem="Rh7-vx-tGo" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="Uh7-Hc-JWS"/>
+                            <constraint firstAttribute="trailing" secondItem="Rh7-vx-tGo" secondAttribute="trailing" id="Vvw-60-LKp"/>
                             <constraint firstItem="PTb-7p-g0m" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="dRL-Rj-WFg"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>

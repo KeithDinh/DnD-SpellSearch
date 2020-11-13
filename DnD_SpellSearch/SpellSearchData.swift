@@ -4,7 +4,7 @@
 //
 //  Created by student on 10/26/20.
 //  Copyright © 2020 Dillon Jones & Kiet Dinh. All rights reserved.
-//
+//  Define the data models to convert data from API
 
 import Foundation
 //Spell Lists
