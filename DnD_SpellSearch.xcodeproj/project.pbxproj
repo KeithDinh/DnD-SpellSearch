@@ -15,6 +15,7 @@
 		3F56543F25366BD300348E3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F56543E25366BD300348E3D /* Assets.xcassets */; };
 		3F56544225366BD300348E3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F56544025366BD300348E3D /* LaunchScreen.storyboard */; };
 		3F56544C25366DBD00348E3D /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F56544B25366DBD00348E3D /* SearchViewController.swift */; };
+		3F77A59725683F33002E1B8D /* Resnet50.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 3F77A59625683F33002E1B8D /* Resnet50.mlmodel */; };
 		3FDF5D132547DCB4004BA8B9 /* SpellSearchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FDF5D122547DCB4004BA8B9 /* SpellSearchData.swift */; };
 		3FDF5D8C25493BF5004BA8B9 /* Nodesto Caps Condensed.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3FDF5D8325493BF4004BA8B9 /* Nodesto Caps Condensed.otf */; };
 		3FDF5D8D25493BF5004BA8B9 /* Scaly Sans Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3FDF5D8425493BF4004BA8B9 /* Scaly Sans Bold.otf */; };
@@ -41,6 +42,7 @@
 		3F56544125366BD300348E3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3F56544325366BD300348E3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3F56544B25366DBD00348E3D /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		3F77A59625683F33002E1B8D /* Resnet50.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = Resnet50.mlmodel; path = ../../../Downloads/Resnet50.mlmodel; sourceTree = "<group>"; };
 		3FDF5D122547DCB4004BA8B9 /* SpellSearchData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellSearchData.swift; sourceTree = "<group>"; };
 		3FDF5D8325493BF4004BA8B9 /* Nodesto Caps Condensed.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Nodesto Caps Condensed.otf"; path = "DnD_SpellSearch/5th Edition Font Clones CC/Nodesto Caps Condensed.otf"; sourceTree = SOURCE_ROOT; };
 		3FDF5D8425493BF4004BA8B9 /* Scaly Sans Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Scaly Sans Bold.otf"; path = "DnD_SpellSearch/5th Edition Font Clones CC/Scaly Sans Bold.otf"; sourceTree = SOURCE_ROOT; };
@@ -88,6 +90,7 @@
 			children = (
 				3FDF5D2425490822004BA8B9 /* Fonts */,
 				84B9E4EA255D202A0052C837 /* CustomLaunchViewController.swift */,
+				3F77A59625683F33002E1B8D /* Resnet50.mlmodel */,
 				3F56543025366BCF00348E3D /* AppDelegate.swift */,
 				3F56543225366BCF00348E3D /* SceneDelegate.swift */,
 				3F56544B25366DBD00348E3D /* SearchViewController.swift */,
@@ -200,6 +203,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F77A59725683F33002E1B8D /* Resnet50.mlmodel in Sources */,
 				3F56543D25366BCF00348E3D /* DnD_SpellSearch.xcdatamodeld in Sources */,
 				3F56544C25366DBD00348E3D /* SearchViewController.swift in Sources */,
 				84B9E4EB255D202A0052C837 /* CustomLaunchViewController.swift in Sources */,

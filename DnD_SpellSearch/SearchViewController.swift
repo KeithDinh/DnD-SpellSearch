@@ -7,34 +7,47 @@
 //
 // https://www.dnd5eapi.co/
 import UIKit
-
+import NaturalLanguage
 class SearchViewController: UIViewController, UITextFieldDelegate {
 
     var spellList = [Spells]()
     var filteredList = [Spells]()
+    var ListLemmas: [[String]] = []
     var selectedSpell: String = ""
+    var matchingLemmaList = [Spells]()
 
     @IBOutlet var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
+    
     var searchManager = SearchManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setFonts()
         navigationController?.navigationBar.topItem?.titleView = searchBar
-        
         searchManager.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
         searchBar.delegate = self
-        
         searchManager.fetchList()
-        
-        // this one is to create event listener when click on return after typing
-        // it called function onReturn
-       // self.searchField.addTarget(self, action: #selector(onReturn), for: UIControl.Event.editingDidEndOnExit)
-        
+    }
+    func getListLemmas() {
+        ListLemmas = []
+        for spells in spellList{
+            var Lemma: [String] = []
+            let text = spells.name
+            let tagger = NLTagger(tagSchemes: [.lemma])
+            tagger.string = text
+            tagger.enumerateTags(in: text.startIndex..<text.endIndex, unit: .word, scheme: .lemma) { tag, tokenId in
+                if let convertedTag = tag {
+                    Lemma.append("\(convertedTag.rawValue)")
+                }
+                return true
+            }
+            
+            ListLemmas.append(Lemma)
+        }
+        print(ListLemmas)
     }
     
     @IBAction func levelButton(_ sender: Any) {
@@ -69,62 +82,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
         }
         self.present(schoolSelect, animated: true, completion: nil)
     }
-    // WARNING
-    /*
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        textField.resignFirstResponder()
-        let actionSheetAlert = UIAlertController(title: "Pick a School", message: "", preferredStyle: .actionSheet)
-        actionSheetAlert.addAction(UIAlertAction(title: "All Schools", style: .default, handler: {_ in
-            self.schoolField.text = ""
-            self.schoolSpecificList = []
-        }))
-        for school in schoolList {
-            actionSheetAlert.addAction(UIAlertAction(title: school.name, style: .default, handler: { _ in
-                self.schoolField.text = school.name
-                self.schoolSpecificList = []
-                let spellUrl = URL(string: "https://www.dnd5eapi.co/api//spells?school=\(school.name)")
-                if spellUrl != nil {
-                    self.downloadData(url: spellUrl!, type: "schoolspell")
-                }
-                
-            }))
-        }
-        self.present(actionSheetAlert, animated: true, completion: nil)
-    }
-    */
-    /*
-    @IBAction func onReturn()
-    {
-        // not sure why, but need this line
-        //self.searchField.resignFirstResponder()
-        
-        // Dillon's codes
-        
-        guard searchField.text!.count > 0 else {
-            // if nothing in the textfield => show all
-            // similarList = spellList
-            // performSegue(withIdentifier: "table_seg", sender: self)
-            createAlert(title: "Empty Field", message: "Search an item or use the Search All tab!")
-            return
-        }
-        // if there is character in textfield => search
-        let searchedText = searchField.text!.lowercased().replacingOccurrences(of: " ", with: "-")
-        if schoolSpecificList.count == 0 {
-            for item in spellList {
-                if item.index.contains("\(searchedText)"){
-                    similarList.append(item)
-                }
-            }
-        } else {
-            for item in schoolSpecificList {
-                if item.index.contains("\(searchedText)"){
-                    similarList.append(item)
-                }
-            }
-        }
-        performSegue(withIdentifier: "table_seg", sender: self)
-    }
-*/
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier=="showDetail" {
             let Details = segue.destination as! FirstViewController
@@ -132,45 +90,6 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    /*
-    func decodeData(downloaded_data: Data, type: String){
-         do
-         {
-            let downloaded_info = try JSONDecoder().decode(Root.self, from:downloaded_data)
-            let tempList = downloaded_info.results
-            if type == "spell"
-            {
-                for items in tempList{
-                    spellList.append(items)
-                }
-            }
-            else if type == "school"
-            {
-                for items in tempList{
-                    schoolList.append(items)
-                }
-            }
-            else if type == "schoolspell"
-            {
-                for items in tempList{
-                    schoolSpecificList.append(items)
-                }
-            }
-            
-         } catch {print("Decoding Error")}
-        
-    }
-    func downloadData(url: URL, type: String) {
-        let _ = URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
-            //decode
-            if let downloaded_data = data {
-                self.decodeData(downloaded_data: downloaded_data, type: type)
-            } else if let error = error {
-                print(error)
-            }
-        }).resume()
-    }
- */
     override func viewDidAppear(_ animated: Bool) {
         
         // navigationbar background color
@@ -185,13 +104,6 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
 
 
     }
-    override func viewWillDisappear(_ animated: Bool) {
-
-    }
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewWillDisappear(true)
-        //navigationController?.setNavigationBarHidden(false, animated: true)
-    }
     func createAlert(title: String, message: String)
     {
         // display an message to the users (basically an alert window)
@@ -204,42 +116,100 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
         // show the action window when users perform action
         self.present(alert, animated: true, completion: nil)
     }
-    func setFonts() {
-        //searchField.font = UIFont(name: "Bookinsanity", size: 17)
-    }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 extension SearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedSpell = filteredList[indexPath.row].url
-        performSegue(withIdentifier: "showDetail", sender: self)
+        if numberOfSections(in: tableView) == 2 {
+            if indexPath.section == 2{
+                selectedSpell = filteredList[indexPath.row].url
+                performSegue(withIdentifier: "showDetail", sender: self)
+            }
+            else{
+                selectedSpell = matchingLemmaList[indexPath.row].url
+                performSegue(withIdentifier: "showDetail", sender: self)
+            }
+            
+        }
+        else{
+            selectedSpell = filteredList[indexPath.row].url
+            performSegue(withIdentifier: "showDetail", sender: self)
+                
+        }
+
     }
 }
+
 extension SearchViewController: UITableViewDataSource{
+ 
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if numberOfSections(in: tableView) > 1 {
+            let label = UILabel()
+            label.backgroundColor = .black
+            label.textColor = .white
+            label.font = UIFont(name: "Mr.EavesSmallCaps", size: 25)
+            if section == 0 {
+                label.text = "Spells with Similar Meanings"
+            } else {
+                label.text = "Spells with Similar Names"
+            }
+            return label
+        } else {
+            print("No label")
+            return nil
+        }
+
+    }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if numberOfSections(in: tableView) == 1 {
+            return 0
+        }else{
+            return 50
+        }
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 56
+    }
+    func numberOfSections(in tableView: UITableView) -> Int {
+        if matchingLemmaList.count != 0 {
+            return 2
+        }
+        else {
+            return 1
+        }
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return filteredList.count
+        if numberOfSections(in: tableView) == 2{
+            if section == 0 {
+                return matchingLemmaList.count
+            }
+            else{
+                return filteredList.count
+            }
+        }
+        else{
+            return filteredList.count
+        }
+ 
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.layer.backgroundColor = UIColor.clear.cgColor
-        
         let cellName = cell.viewWithTag(1) as! UILabel
         cellName.font = UIFont(name: "Mr.EavesSmallCaps", size: 20)
-        cellName.text = filteredList[indexPath.row].name
         
+        if numberOfSections(in: tableView) == 2 {
+            if indexPath.section == 0{
+                cellName.text = matchingLemmaList[indexPath.row].name
+            }
+            else {
+                cellName.text = filteredList[indexPath.row].name
+            }
+        }
+        else {
+            cellName.text = filteredList[indexPath.row].name
+        }
         return cell
     }
-    
-    
 }
 
 extension SearchViewController: UISearchBarDelegate {
@@ -247,23 +217,47 @@ extension SearchViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String){
         filteredList = searchText.isEmpty ? spellList : spellList.filter {(list:Spells) -> Bool in
             return list.name.range(of:searchText, options: .caseInsensitive, range:nil, locale: nil) != nil
+        }
+        lemmatizeSearch(textToProcess : searchText)
+    }
+    func lemmatizeSearch(textToProcess : String) {
+        matchingLemmaList = []
+        let text = textToProcess
+        let tagger = NLTagger(tagSchemes: [.lemma])
+        tagger.string = text
+        var searchedLemmas: [String] = []
+        tagger.enumerateTags(in: text.startIndex..<text.endIndex, unit: .word, scheme: .lemma) { tag, tokenId in
+            if let convertedTag = tag {
+                searchedLemmas.append(convertedTag.rawValue)
+            }
+            return true
+        }
+        print(searchedLemmas)
+        if searchedLemmas.count != 0 {
+            for (index,item) in ListLemmas.enumerated() {
+                if item.count != 0 {
+                    if item.contains(where: searchedLemmas.contains){
+                        matchingLemmaList.append(spellList[index])
+                    }
+                }
+            }
             
         }
+        print(matchingLemmaList)
         tableView.reloadData()
+
     }
-    
 }
 extension SearchViewController: SearchManagerDelegate {
     func didUpdateList (_ searchManager: SearchManager, list: [Spells]) {
         DispatchQueue.main.async {
             self.spellList = list
             self.filteredList = list
+            self.getListLemmas()
             self.searchBar.text = ""
             self.tableView.reloadData()
         }
     }
-    
-    
     func didFailWithError(error: Error) {
         print(error)
     }

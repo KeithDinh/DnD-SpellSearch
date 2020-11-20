@@ -10,6 +10,7 @@ import Foundation
 //Spell Lists
 
 var spellSchools: [String] = ["Abjuration","Conjuration","Divination","Enchantment","Evocation","Illusion","Necromancy","Transmutation"]
+
 struct Spells: Codable{
     init(){
         index = ""

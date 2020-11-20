@@ -103,7 +103,7 @@ extension FavoriteViewController: UITableViewDelegate {
     
     // height removes warning "Detected a case where constraints ambiguously suggest a height of zero for a table view cell's content view. We're considering the collapse unintentional and using standard height instead"
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        56
+        return 56
     }
 }
 
