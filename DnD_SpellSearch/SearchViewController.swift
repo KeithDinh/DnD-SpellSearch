@@ -60,7 +60,6 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
             
             ListLemmas.append(Lemma)
         }
-        print(ListLemmas)
     }
     
     @IBAction func levelButton(_ sender: Any) {
@@ -159,11 +158,11 @@ extension SearchViewController: UITableViewDataSource{
             let label = UILabel()
             label.backgroundColor = .black
             label.textColor = .white
-            label.font = UIFont(name: "Mr.EavesSmallCaps", size: 25)
+            label.font = UIFont(name: "Bookinsanity", size: 20)
             if section == 0 {
-                label.text = "Spells with Similar Meanings"
+                label.text = " Spells with Similar Meanings"
             } else {
-                label.text = "Spells with Similar Names"
+                label.text = " Spells with Similar Names"
             }
             return label
         } else {
@@ -176,7 +175,7 @@ extension SearchViewController: UITableViewDataSource{
         if numberOfSections(in: tableView) == 1 {
             return 0
         }else{
-            return 50
+            return 30
         }
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -259,7 +258,6 @@ extension SearchViewController: UISearchBarDelegate {
             }
             return true
         }
-        print("Searched: \(text) Lemmas: \(searchedLemmas)")
         if searchedLemmas.count != 0 {
             for (index,item) in ListLemmas.enumerated() {
                 if item.count != 0 {
@@ -270,7 +268,6 @@ extension SearchViewController: UISearchBarDelegate {
             }
             
         }
-        print(matchingLemmaList)
         tableView.reloadData()
 
     }
