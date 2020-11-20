@@ -35,12 +35,25 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
         ListLemmas = []
         for spells in spellList{
             var Lemma: [String] = []
-            let text = spells.name
+            var text = spells.name
+            var singleWord = false
+            if text.components(separatedBy: " ").filter({!$0.isEmpty}).count == 1 {
+                text = "please show me \(text)"
+                singleWord = true
+            }
             let tagger = NLTagger(tagSchemes: [.lemma])
             tagger.string = text
             tagger.enumerateTags(in: text.startIndex..<text.endIndex, unit: .word, scheme: .lemma) { tag, tokenId in
                 if let convertedTag = tag {
-                    Lemma.append("\(convertedTag.rawValue)")
+                    let tagValue = convertedTag.rawValue.lowercased()
+                    if singleWord == true {
+                        if tagValue != "please" && tagValue != "show" && tagValue != "i" {
+                            Lemma.append("\(convertedTag.rawValue.lowercased())")
+                        }
+                    }
+                    else{
+                    Lemma.append("\(convertedTag.rawValue.lowercased())")
+                    }
                 }
                 return true
             }
@@ -222,17 +235,31 @@ extension SearchViewController: UISearchBarDelegate {
     }
     func lemmatizeSearch(textToProcess : String) {
         matchingLemmaList = []
-        let text = textToProcess
+        var text = textToProcess
+        var singleWord = false
+        if text.components(separatedBy: " ").filter({!$0.isEmpty}).count == 1 {
+            text = "please show me \(text)"
+            singleWord = true
+        }
         let tagger = NLTagger(tagSchemes: [.lemma])
         tagger.string = text
         var searchedLemmas: [String] = []
         tagger.enumerateTags(in: text.startIndex..<text.endIndex, unit: .word, scheme: .lemma) { tag, tokenId in
             if let convertedTag = tag {
-                searchedLemmas.append(convertedTag.rawValue)
+                let tagValue = convertedTag.rawValue.lowercased()
+                if singleWord == true {
+                    if tagValue != "please" && tagValue != "show" && tagValue != "i" {
+                        searchedLemmas.append("\(convertedTag.rawValue.lowercased())")
+                    }
+                }
+                else{
+                searchedLemmas.append("\(convertedTag.rawValue.lowercased())")
+                }
+                
             }
             return true
         }
-        print(searchedLemmas)
+        print("Searched: \(text) Lemmas: \(searchedLemmas)")
         if searchedLemmas.count != 0 {
             for (index,item) in ListLemmas.enumerated() {
                 if item.count != 0 {
