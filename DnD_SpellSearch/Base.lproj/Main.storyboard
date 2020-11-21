@@ -10,7 +10,7 @@
         <!--Descriptions-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
-                <viewController id="9pv-A4-QxB" customClass="FirstViewController" customModule="DnD_SpellSearch" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="9pv-A4-QxB" customClass="FirstViewController" customModule="DnD_SpellBook" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tsR-hK-woN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -316,7 +316,7 @@
         <!--Favorite View Controller-->
         <scene sceneID="Nmy-Mh-dAY">
             <objects>
-                <viewController id="KHZ-kW-bok" customClass="FavoriteViewController" customModule="DnD_SpellSearch" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="KHZ-kW-bok" customClass="FavoriteViewController" customModule="DnD_SpellBook" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HTS-oh-yo7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -335,7 +335,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MJi-kf-Qev">
-                                <rect key="frame" x="0.0" y="49" width="375" height="618"/>
+                                <rect key="frame" x="0.0" y="89" width="375" height="578"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.78295351531023383" colorSpace="custom" customColorSpace="sRGB"/>
@@ -362,11 +362,26 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hnm-UH-YtN">
+                                <rect key="frame" x="0.0" y="49" width="375" height="40"/>
+                                <color key="backgroundColor" red="0.1411601901" green="0.14118680359999999" blue="0.14115440849999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="1tf-nd-aT9"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Newest"/>
+                                <connections>
+                                    <action selector="displaySwitch:" destination="KHZ-kW-bok" eventType="touchUpInside" id="aKL-RE-8NY"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="IIY-Em-PId" firstAttribute="trailing" secondItem="yVP-bb-A1Y" secondAttribute="trailing" id="0z1-Ry-tof"/>
+                            <constraint firstItem="Hnm-UH-YtN" firstAttribute="top" secondItem="IIY-Em-PId" secondAttribute="bottom" id="2eL-0O-dlf"/>
                             <constraint firstItem="yVP-bb-A1Y" firstAttribute="bottom" secondItem="ETa-OU-TWp" secondAttribute="bottom" id="3bg-sr-3QU"/>
+                            <constraint firstItem="yVP-bb-A1Y" firstAttribute="trailing" secondItem="Hnm-UH-YtN" secondAttribute="trailing" id="3qT-72-GCv"/>
+                            <constraint firstItem="MJi-kf-Qev" firstAttribute="top" secondItem="Hnm-UH-YtN" secondAttribute="bottom" id="7Zd-kZ-L1r"/>
                             <constraint firstItem="IIY-Em-PId" firstAttribute="top" secondItem="yVP-bb-A1Y" secondAttribute="top" id="J2a-AV-6i6"/>
                             <constraint firstAttribute="trailing" secondItem="ETa-OU-TWp" secondAttribute="trailing" id="Ru7-57-KWe"/>
                             <constraint firstItem="MJi-kf-Qev" firstAttribute="leading" secondItem="HTS-oh-yo7" secondAttribute="leading" id="TCs-96-NCX"/>
@@ -374,7 +389,7 @@
                             <constraint firstItem="ETa-OU-TWp" firstAttribute="top" secondItem="HTS-oh-yo7" secondAttribute="top" id="YBk-8e-Pzq"/>
                             <constraint firstAttribute="trailing" secondItem="MJi-kf-Qev" secondAttribute="trailing" id="Yds-vS-1ky"/>
                             <constraint firstAttribute="bottom" secondItem="MJi-kf-Qev" secondAttribute="bottom" id="blm-ya-Rij"/>
-                            <constraint firstItem="MJi-kf-Qev" firstAttribute="top" secondItem="IIY-Em-PId" secondAttribute="bottom" id="mT8-nA-bHa"/>
+                            <constraint firstItem="Hnm-UH-YtN" firstAttribute="leading" secondItem="yVP-bb-A1Y" secondAttribute="leading" id="p15-uP-jpi"/>
                             <constraint firstItem="ETa-OU-TWp" firstAttribute="leading" secondItem="yVP-bb-A1Y" secondAttribute="leading" id="wvP-jZ-tAu"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="yVP-bb-A1Y"/>
@@ -382,6 +397,7 @@
                     <tabBarItem key="tabBarItem" systemItem="favorites" id="qMr-6V-nAX"/>
                     <navigationItem key="navigationItem" id="9bN-Mc-pgf"/>
                     <connections>
+                        <outlet property="displayBtn" destination="Hnm-UH-YtN" id="pwp-wf-7bh"/>
                         <outlet property="searchBar" destination="qHa-kU-GCj" id="IY5-o6-OCe"/>
                         <outlet property="tableView" destination="MJi-kf-Qev" id="7uo-LI-lnK"/>
                         <segue destination="9pv-A4-QxB" kind="show" identifier="favToDetail" id="Uho-5v-FbT"/>
@@ -399,7 +415,7 @@
         <!--Search View Controller-->
         <scene sceneID="eIk-Ge-sQC">
             <objects>
-                <viewController storyboardIdentifier="Home" id="f5z-E8-5Kj" customClass="SearchViewController" customModule="DnD_SpellSearch" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Home" id="f5z-E8-5Kj" customClass="SearchViewController" customModule="DnD_SpellBook" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uHO-i8-L4A">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -553,7 +569,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="GTO-Kg-481"/>
+        <segue reference="Uho-5v-FbT"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
     <resources>

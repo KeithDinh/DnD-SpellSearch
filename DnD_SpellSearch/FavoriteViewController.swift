@@ -15,7 +15,8 @@ class FavoriteViewController: UIViewController {
 
     @IBOutlet var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
-
+    @IBOutlet weak var displayBtn: UIButton!
+    
     // initialize the core data object
     var Favorite: [NSManagedObject] = []
     var filteredList: [NSManagedObject] = []
@@ -42,6 +43,36 @@ class FavoriteViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        fetchFromCoredata(order: "newest")
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier=="favToDetail" {
+            let Details = segue.destination as! FirstViewController
+            Details.passedInformation = selectedFav
+        }
+    }
+    @IBAction func displaySwitch(_ sender: Any) {
+        let displayTxt = displayBtn.titleLabel!.text
+        switch displayTxt {
+        case "Newest":
+            displayBtn.setTitle("Oldest", for: .normal)
+            fetchFromCoredata(order: "oldest")
+            break
+        case "Oldest":
+            displayBtn.setTitle("Alphabetical", for: .normal)
+            fetchFromCoredata(order: "alphabetical")
+            break
+        case "Alphabetical":
+            displayBtn.setTitle("Newest", for: .normal)
+            fetchFromCoredata(order: "newest")
+            break
+        default:
+            break
+        }
+    }
+    
+    func fetchFromCoredata(order:String)
+    {
     // 3 steps of fetching data from CoreData
         // 1
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
@@ -50,22 +81,26 @@ class FavoriteViewController: UIViewController {
         let managedContent = appDelegate.persistentContainer.viewContext
         // 2
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Favorite")
+        
+        // Set order
+        if order == "alphabetical" {
+            let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
+            fetchRequest.sortDescriptors = [sortDescriptor]
+        }
+
         // 3
         do {
             Favorite = try managedContent.fetch(fetchRequest)
-            filteredList = Favorite
+            if order == "newest" {
+                filteredList = Favorite.reversed()
+            } else {
+                filteredList = Favorite
+            }
         } catch let error as NSError{
             print("Could not fetch. \(error), \(error.userInfo)")
         }
         DispatchQueue.main.async {
             self.tableView.reloadData()
-        }
-
-    }
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier=="favToDetail" {
-            let Details = segue.destination as! FirstViewController
-            Details.passedInformation = selectedFav
         }
     }
 }

@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "3F56542C25366BCF00348E3D"
-               BuildableName = "DnD_SpellSearch.app"
+               BuildableName = "DnD SpellBook.app"
                BlueprintName = "DnD_SpellSearch"
                ReferencedContainer = "container:DnD_SpellSearch.xcodeproj">
             </BuildableReference>
@@ -46,7 +46,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3F56542C25366BCF00348E3D"
-            BuildableName = "DnD_SpellSearch.app"
+            BuildableName = "DnD SpellBook.app"
             BlueprintName = "DnD_SpellSearch"
             ReferencedContainer = "container:DnD_SpellSearch.xcodeproj">
          </BuildableReference>
@@ -63,7 +63,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3F56542C25366BCF00348E3D"
-            BuildableName = "DnD_SpellSearch.app"
+            BuildableName = "DnD SpellBook.app"
             BlueprintName = "DnD_SpellSearch"
             ReferencedContainer = "container:DnD_SpellSearch.xcodeproj">
          </BuildableReference>
