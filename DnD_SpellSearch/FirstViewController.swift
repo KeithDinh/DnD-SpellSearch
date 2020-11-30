@@ -103,7 +103,6 @@ class FirstViewController: UIViewController {
             print("error in save \(error), \(error.userInfo)")
         }
     }
-    
     @IBAction func likeButton(_ sender: Any) {
         if isFav {
             removeFromFavorite()
@@ -111,7 +110,6 @@ class FirstViewController: UIViewController {
             addToFavorite()
         }
     }
-    
     func setFavStatus(status:Bool){
         isFav = status
         if status {
@@ -120,8 +118,6 @@ class FirstViewController: UIViewController {
             favButton.image = UIImage(systemName: "heart")
         }
     }
-    
-
     func checkFav(){
         //1
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
@@ -210,7 +206,6 @@ class FirstViewController: UIViewController {
         }
         spellClasses.text = "\(classList)"
     }
-    
     func getSubClasses() {
         if thisSpell.subclasses?.count == 0 {
             // prevent the sub class to be None
@@ -231,15 +226,6 @@ class FirstViewController: UIViewController {
         }
         spellSubClasses.text = "\(subClassList)"
     }
-//    func getSpellDamageType()
-//    {
-//
-//        if self.thisSpell.damage?.damage_type.name != nil {
-//            spellDamageType.text = self.thisSpell.damage?.damage_type.name
-//            return
-//        }
-//        self.spellDamageType.text = "None"
-//    }
     func decodeData(downloaded_data: Data){
          do {
             let downloaded_info = try JSONDecoder().decode(spellDetails.self, from:downloaded_data)
@@ -305,7 +291,5 @@ class FirstViewController: UIViewController {
         spellExtra.textContainerInset = UIEdgeInsets.zero
         spellExtra.textContainer.lineFragmentPadding = 0
         
-        //Mr.EavesSmallCaps
     }
 }
-//Family: Bookinsanity Font names: ["Bookinsanity-Italic", "Bookinsanity-BoldItalic"]

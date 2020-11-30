@@ -25,12 +25,17 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         
         navigationController?.navigationBar.topItem?.titleView = searchBar
+        searchBar.delegate = self
         searchManager.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
-        searchBar.delegate = self
         searchManager.fetchList()
     }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        let favoriteTab = self.tabBarController?.viewControllers![1] as! FavoriteViewController
+        favoriteTab.searchBar = searchBar
+     }
     func getListLemmas() {
         ListLemmas = []
         for spells in spellList{
@@ -103,7 +108,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        
+        searchBar.delegate = self
         // navigationbar background color
         navigationController?.navigationBar.barTintColor = UIColor(red: 0.13, green: 0.13, blue: 0.12, alpha: 1.00)
         // set title color to white
@@ -111,7 +116,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
         // set battery icon, time, network service to white
         navigationController?.navigationBar.barStyle = .black
 
-        super.viewWillAppear(true)
+        //super.viewWillAppear(true)
         //navigationController?.setNavigationBarHidden(true, animated: true)
 
 

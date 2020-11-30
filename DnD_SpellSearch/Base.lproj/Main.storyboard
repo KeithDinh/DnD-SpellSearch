@@ -398,17 +398,11 @@
                     <navigationItem key="navigationItem" id="9bN-Mc-pgf"/>
                     <connections>
                         <outlet property="displayBtn" destination="Hnm-UH-YtN" id="pwp-wf-7bh"/>
-                        <outlet property="searchBar" destination="qHa-kU-GCj" id="IY5-o6-OCe"/>
                         <outlet property="tableView" destination="MJi-kf-Qev" id="7uo-LI-lnK"/>
                         <segue destination="9pv-A4-QxB" kind="show" identifier="favToDetail" id="Uho-5v-FbT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JmZ-qn-7x9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <searchBar contentMode="redraw" barStyle="black" placeholder="Search" id="qHa-kU-GCj">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                    <textInputTraits key="textInputTraits"/>
-                </searchBar>
             </objects>
             <point key="canvasLocation" x="-60" y="-206.44677661169416"/>
         </scene>

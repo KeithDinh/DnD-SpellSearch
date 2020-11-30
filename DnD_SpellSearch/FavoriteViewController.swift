@@ -13,7 +13,6 @@ import CoreData
 
 class FavoriteViewController: UIViewController {
 
-    @IBOutlet var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var displayBtn: UIButton!
     
@@ -22,29 +21,26 @@ class FavoriteViewController: UIViewController {
     var filteredList: [NSManagedObject] = []
     // save the selected row
     var selectedFav: String = ""
+    var searchBar: UISearchBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // if doesn't have this line, the textDidChange won't work
-        navigationController?.navigationBar.topItem?.titleView = searchBar
-        
-        // connect FavoriteViewController searchBar to UISearchBarDelegate extension below
-        self.searchBar.delegate = self
-        
+
         // connect FavoriteViewController tableView to UITableViewDeletegate extension below
-        self.tableView.delegate = self
+        tableView.delegate = self
         
         // connect FavoriteViewController tableView to UITableViewDataSource extension below
-        self.tableView.dataSource = self
-        
+        tableView.dataSource = self
         
     }
-    
+    override func viewDidAppear(_ animated: Bool) {
+        searchBar.delegate = self
+    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         fetchFromCoredata(order: "newest")
     }
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier=="favToDetail" {
             let Details = segue.destination as! FirstViewController
