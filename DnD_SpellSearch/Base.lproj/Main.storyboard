@@ -271,18 +271,11 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Descriptions" selectedImage="info.circle" catalog="system" id="acW-dT-cKf"/>
                     <navigationItem key="navigationItem" id="9RD-eH-gLL">
-                        <rightBarButtonItems>
-                            <barButtonItem title="Home" image="house" catalog="system" id="Y95-5I-CjW">
-                                <connections>
-                                    <action selector="homeButton:" destination="9pv-A4-QxB" id="mmE-61-gDv"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem image="heart" catalog="system" style="plain" id="8VC-Yq-211">
-                                <connections>
-                                    <action selector="likeButton:" destination="9pv-A4-QxB" id="HhS-T5-ASy"/>
-                                </connections>
-                            </barButtonItem>
-                        </rightBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" image="heart" catalog="system" style="plain" id="8VC-Yq-211">
+                            <connections>
+                                <action selector="likeButton:" destination="9pv-A4-QxB" id="HhS-T5-ASy"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <size key="freeformSize" width="375" height="1000"/>
                     <connections>
@@ -563,12 +556,11 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Uho-5v-FbT"/>
+        <segue reference="GTO-Kg-481"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
     <resources>
         <image name="heart" catalog="system" width="128" height="109"/>
-        <image name="house" catalog="system" width="128" height="110"/>
         <image name="info.circle" catalog="system" width="128" height="121"/>
         <image name="urn_aaid_sc_US_1777706d-7d97-4e70-90b7-1a206e1e9534" width="375" height="570"/>
     </resources>

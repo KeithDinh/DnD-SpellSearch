@@ -49,11 +49,6 @@ class FirstViewController: UIViewController {
             downloadData(url:url!)
         }
     }
-
-    @IBAction func homeButton(_ sender: Any) {
-        self.navigationController?.popToRootViewController(animated: true)
-        
-    }
     
     // add to core data, 
     func addToFavorite(){
