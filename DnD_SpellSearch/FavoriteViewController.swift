@@ -2,6 +2,8 @@
 //  FavoriteViewController.swift
 //  DnD_SpellSearch
 //
+// !!! Requires Resnet50.mlmodel !!!
+//
 //  Created by admin on 11/13/20.
 //  Copyright © 2020 Dillon Jones & Kiet Dinh. All rights reserved.
 //  Ref: guides.codepath.com/ios/Search-Bar-Guide
@@ -47,6 +49,8 @@ class FavoriteViewController: UIViewController {
             Details.passedInformation = selectedFav
         }
     }
+    
+    //Changes how favorited spells are displayed
     @IBAction func displaySwitch(_ sender: Any) {
         let displayTxt = displayBtn.titleLabel!.text
         switch displayTxt {

@@ -2,6 +2,8 @@
 //  FirstViewController.swift
 //  DnD_SpellSearch
 //
+// !!! Requires Resnet50.mlmodel !!!
+//
 //  Created by student on 10/13/20.
 //  Copyright © 2020 Dillon Jones & Kiet Dinh. All rights reserved.
 //
@@ -36,7 +38,6 @@ class FirstViewController: UIViewController {
     @IBOutlet weak var spellSubClasses: UILabel!
     @IBOutlet weak var labelDesc: UILabel!
     @IBOutlet weak var spellDesc: UITextView!
-    // @IBOutlet weak var spellDamageType: UILabel!
     @IBOutlet weak var labelExtra: UILabel!
     @IBOutlet weak var spellExtra: UITextView!
     

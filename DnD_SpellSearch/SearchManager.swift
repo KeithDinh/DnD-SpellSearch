@@ -8,6 +8,8 @@
 
 import Foundation
 
+//Manager for API interactions
+
 protocol SearchManagerDelegate {
     func didUpdateList(_ searchManager: SearchManager, list: [Spells])
     func didFailWithError(error: Error)

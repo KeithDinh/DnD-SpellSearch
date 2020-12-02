@@ -7,7 +7,8 @@
 //  Define the data models to convert data from API
 
 import Foundation
-//Spell Lists
+
+//Data and Codables
 
 var spellSchools: [String] = ["Abjuration","Conjuration","Divination","Enchantment","Evocation","Illusion","Necromancy","Transmutation"]
 

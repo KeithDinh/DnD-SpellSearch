@@ -2,6 +2,8 @@
 //  SearchViewController.swift
 //  DnD_SpellSearch
 //
+// !!! Requires Resnet50.mlmodel !!!
+//
 //  Created by student on 10/13/20.
 //  Copyright © 2020 Dillon Jones & Kiet Dinh. All rights reserved.
 //
@@ -24,6 +26,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Adds search bar to navigation controller. Delegation is switched between Tabs
         navigationController?.navigationBar.topItem?.titleView = searchBar
         searchBar.delegate = self
         searchManager.delegate = self
@@ -31,11 +34,13 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
         tableView.dataSource = self
         searchManager.fetchList()
     }
-    
+    //Allows second tab to use same navigation search bar
     override func viewDidDisappear(_ animated: Bool) {
         let favoriteTab = self.tabBarController?.viewControllers![1] as! FavoriteViewController
         favoriteTab.searchBar = searchBar
      }
+    
+    //For each spell in spellList, make seperate list of the spell name's lemma
     func getListLemmas() {
         ListLemmas = []
         for spells in spellList{
@@ -66,7 +71,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
             ListLemmas.append(Lemma)
         }
     }
-    
+    //Fetches level specified spells from API
     @IBAction func levelButton(_ sender: Any) {
         let levelSelect = UIAlertController(title: "Sort by Level", message:"", preferredStyle: .actionSheet)
                levelSelect.addAction(UIAlertAction(title: "Any Level", style: .default, handler: {_ in
@@ -87,6 +92,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
         self.present(levelSelect, animated: true, completion: nil)
     }
     
+    //Fetch school specific spells from API
     @IBAction func schoolButton(_ sender: Any) {
         let schoolSelect = UIAlertController(title: "Sort by School", message:"", preferredStyle: .actionSheet)
                schoolSelect.addAction(UIAlertAction(title: "Any School", style: .default, handler: {_ in
@@ -107,6 +113,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    //Navigation bar Formatting
     override func viewDidAppear(_ animated: Bool) {
         searchBar.delegate = self
         // navigationbar background color
@@ -121,19 +128,11 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
 
 
     }
-    func createAlert(title: String, message: String)
-    {
-        // display an message to the users (basically an alert window)
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        // addAction: attach an action (put button on the alert window)
-        // UIAlertAction: the action of the users (tap)
-        alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: { _ in self.dismiss(animated: true, completion: nil)}))
-        // alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { _ in self.dismiss(animated: true, completion: nil)}))
-        
-        // show the action window when users perform action
-        self.present(alert, animated: true, completion: nil)
-    }
 }
+
+
+// Table view Formatting
+
 extension SearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if numberOfSections(in: tableView) == 2 {
@@ -229,6 +228,7 @@ extension SearchViewController: UITableViewDataSource{
     }
 }
 
+//Allows search bar to update table view dynamically
 extension SearchViewController: UISearchBarDelegate {
     //guides.codepath.com/ios/Search-Bar-Guide
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String){
@@ -277,6 +277,8 @@ extension SearchViewController: UISearchBarDelegate {
 
     }
 }
+
+//Delegate of SearchManager to update lists
 extension SearchViewController: SearchManagerDelegate {
     func didUpdateList (_ searchManager: SearchManager, list: [Spells]) {
         DispatchQueue.main.async {
